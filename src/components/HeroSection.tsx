@@ -11,8 +11,7 @@ const HeroSection = () => {
           backgroundImage: 'url("/Banner Euro Play.png")',
         }}
       >
-        {/* Overlay escuro para melhor contraste */}
-        <div className="absolute inset-0 bg-black/60" />
+     {/* Overlay removido - imagem ficará com opacidade total */}
         
         {/* Efeito sutil de gradiente */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
