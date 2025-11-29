@@ -45,7 +45,7 @@ const HeroSection = () => {
             style={{ animationDelay: "0.1s" }}
           >
             Filmes em 4K, séries exclusivas e os melhores games. Experimente a
-            plataforma mais avançada de streaming do Brasil.
+            plataforma EuroPlayO - a mais avançada de streaming.
           </p>
 
           {/* CTA Buttons */}
