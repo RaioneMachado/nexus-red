@@ -1,11 +1,11 @@
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Image - Caminho direto da public */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url("/bg-img/hero-bg/Banner Euro Play.jpg")', // ← Nome correto da imagem
+          backgroundImage: 'url("/Banner Euro Play.png")',
         }}
       >
         {/* Overlay */}
@@ -13,7 +13,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
       </div>
 
-      {/* Resto do código permanece igual */}
+      {/* Resto do código */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
         {/* ... conteúdo do hero ... */}
       </div>
