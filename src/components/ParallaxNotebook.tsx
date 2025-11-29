@@ -10,23 +10,24 @@ const ParallaxNotebook = () => {
       if (!sectionRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = rect.height;
       const viewportHeight = window.innerHeight;
 
-      // Calculate when section enters and leaves viewport
+      // Calcular quando a seção entra e sai da viewport
       const sectionTop = rect.top;
-      const sectionCenter = sectionTop + sectionHeight / 2;
+      const sectionBottom = rect.bottom;
 
-      // Progress from 0 (closed) to 1 (fully open)
-      const startOpen = viewportHeight * 0.9;
-      const fullyOpen = viewportHeight * 0.4;
+      // Progresso de 0 (fechado) a 1 (totalmente aberto)
+      // Começa a abrir quando o topo da seção atinge 80% da viewport
+      const startOpen = viewportHeight * 0.8;
+      // Termina de abrir quando o topo da seção atinge 50% da viewport (meio da tela)
+      const fullyOpen = viewportHeight * 0.5;
 
-      if (sectionCenter > startOpen) {
+      if (sectionTop > startOpen) {
         setOpenProgress(0);
-      } else if (sectionCenter < fullyOpen) {
+      } else if (sectionTop < fullyOpen) {
         setOpenProgress(1);
       } else {
-        const progress = 1 - (sectionCenter - fullyOpen) / (startOpen - fullyOpen);
+        const progress = 1 - (sectionTop - fullyOpen) / (startOpen - fullyOpen);
         setOpenProgress(Math.max(0, Math.min(1, progress)));
       }
     };
