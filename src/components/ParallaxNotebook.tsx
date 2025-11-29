@@ -18,9 +18,8 @@ const ParallaxNotebook = () => {
       const sectionCenter = sectionTop + sectionHeight / 2;
 
       // Progress from 0 (closed) to 1 (fully open)
-      // Opens as the section moves from bottom to center of viewport
-      const startOpen = viewportHeight * 0.8;
-      const fullyOpen = viewportHeight * 0.3;
+      const startOpen = viewportHeight * 0.9;
+      const fullyOpen = viewportHeight * 0.4;
 
       if (sectionCenter > startOpen) {
         setOpenProgress(0);
@@ -38,9 +37,10 @@ const ParallaxNotebook = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Calculate lid rotation (0 = closed, -120 = fully open)
-  const lidRotation = openProgress * -120;
-  const screenOpacity = Math.max(0, (openProgress - 0.3) / 0.7);
+  // Lid starts closed (laying flat at 90deg) and opens to upright (0deg)
+  // Using rotateX: 90 = closed (lid flat), 0 = open (lid upright)
+  const lidRotation = 90 - (openProgress * 90);
+  const screenOpacity = Math.max(0, (openProgress - 0.2) / 0.8);
   const glowIntensity = openProgress * 0.8;
 
   return (
@@ -70,42 +70,22 @@ const ParallaxNotebook = () => {
           <div
             className="relative mx-auto"
             style={{
-              perspective: "2000px",
+              perspective: "1500px",
               maxWidth: "700px",
             }}
           >
-            {/* Notebook Base (Keyboard) */}
+            {/* Notebook Lid with Screen - opens from bottom */}
             <div
-              className="relative bg-gradient-to-b from-muted to-secondary rounded-b-2xl rounded-t-lg"
-              style={{
-                height: "20px",
-                transformStyle: "preserve-3d",
-              }}
-            >
-              {/* Keyboard surface detail */}
-              <div className="absolute inset-x-4 top-1 bottom-1 bg-background/30 rounded" />
-            </div>
-
-            {/* Notebook Lid with Screen */}
-            <div
-              className="relative origin-bottom transition-transform duration-100"
+              className="relative transition-transform duration-100"
               style={{
                 transform: `rotateX(${lidRotation}deg)`,
+                transformOrigin: "bottom center",
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* Lid Back (visible when closed) */}
-              <div
-                className="absolute inset-0 bg-gradient-to-b from-secondary to-muted rounded-t-2xl"
-                style={{
-                  backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                }}
-              />
-
               {/* Screen Container */}
               <div
-                className="relative bg-gradient-to-b from-muted via-secondary to-muted p-3 md:p-4 rounded-t-2xl"
+                className="relative bg-gradient-to-b from-zinc-800 via-zinc-700 to-zinc-800 p-2 md:p-3 rounded-t-xl border border-zinc-600"
                 style={{
                   aspectRatio: "16/10",
                   backfaceVisibility: "hidden",
@@ -113,124 +93,118 @@ const ParallaxNotebook = () => {
               >
                 {/* Screen Bezel */}
                 <div
-                  className="relative w-full h-full bg-background rounded-lg overflow-hidden"
+                  className="relative w-full h-full bg-black rounded-lg overflow-hidden"
                   style={{
                     boxShadow: `
-                      inset 0 0 30px rgba(0,0,0,0.5),
-                      0 0 ${50 * screenOpacity}px hsl(var(--primary) / ${0.5 * screenOpacity})
+                      inset 0 0 30px rgba(0,0,0,0.8),
+                      0 0 ${60 * screenOpacity}px hsl(var(--primary) / ${0.6 * screenOpacity})
                     `,
                   }}
                 >
-                  {/* Screen Content */}
+                  {/* Screen Content - Platform Image */}
                   <div
                     className="absolute inset-0 transition-opacity duration-500"
                     style={{ opacity: screenOpacity }}
                   >
-                    {/* Screen Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background" />
-
-                    {/* Platform Interface Mock */}
-                    <div className="relative h-full p-4 md:p-6">
-                      {/* Top Bar */}
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
+                    {/* Main Image */}
+                    <img
+                      src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&h=750&fit=crop"
+                      alt="EuroPlayO Platform"
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Overlay with platform interface */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                        {/* Logo */}
+                        <div className="flex items-center gap-2 mb-3">
                           <div className="w-6 h-6 md:w-8 md:h-8 bg-primary rounded-md flex items-center justify-center">
                             <Play className="w-3 h-3 md:w-4 md:h-4 text-primary-foreground fill-current" />
                           </div>
                           <span className="font-display text-sm md:text-lg text-foreground">
-                            STREAM<span className="text-primary">X</span>
+                            EURO<span className="text-primary">PLAYO</span>
                           </span>
                         </div>
-                        <div className="flex gap-2">
-                          {["Filmes", "Séries", "Games"].map((tab, i) => (
-                            <span
-                              key={tab}
-                              className={`text-[10px] md:text-xs px-2 py-1 rounded ${
-                                i === 0
-                                  ? "bg-primary text-primary-foreground"
-                                  : "text-muted-foreground"
-                              }`}
-                            >
-                              {tab}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Featured Content */}
-                      <div className="relative rounded-lg overflow-hidden mb-4 h-24 md:h-32 bg-gradient-to-r from-primary/20 to-accent/20">
-                        <div className="absolute inset-0 flex items-center p-4">
-                          <div>
-                            <p className="text-[10px] text-primary uppercase tracking-wider">
-                              Em destaque
-                            </p>
-                            <h3 className="font-display text-sm md:text-xl text-foreground">
-                              NOVO LANÇAMENTO
-                            </h3>
-                            <div className="flex items-center gap-2 mt-1">
-                              <span className="px-1.5 py-0.5 bg-primary text-[8px] md:text-xs text-primary-foreground rounded">
-                                4K
-                              </span>
-                              <span className="text-[8px] md:text-xs text-muted-foreground">
-                                2024
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Content Grid */}
-                      <div className="grid grid-cols-4 gap-2">
-                        {[1, 2, 3, 4].map((i) => (
-                          <div
-                            key={i}
-                            className="aspect-[2/3] rounded bg-card animate-pulse"
-                            style={{ animationDelay: `${i * 0.1}s` }}
-                          />
-                        ))}
+                        
+                        {/* Featured info */}
+                        <h3 className="font-display text-lg md:text-2xl text-foreground mb-1">
+                          STREAMING DE QUALIDADE
+                        </h3>
+                        <p className="text-xs md:text-sm text-muted-foreground">
+                          Filmes • Séries • Games
+                        </p>
                       </div>
                     </div>
 
                     {/* Screen Reflection */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
                   </div>
 
                   {/* Screen Off State */}
                   <div
-                    className="absolute inset-0 bg-background flex items-center justify-center transition-opacity duration-300"
+                    className="absolute inset-0 bg-zinc-900 flex items-center justify-center transition-opacity duration-300"
                     style={{ opacity: 1 - screenOpacity }}
                   >
                     <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-muted flex items-center justify-center">
-                        <Play className="w-6 h-6 text-muted-foreground" />
+                      <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 rounded-full border-2 border-zinc-700 flex items-center justify-center">
+                        <Play className="w-5 h-5 md:w-6 md:h-6 text-zinc-600" />
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs md:text-sm text-zinc-600">
                         Role para ativar
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Camera */}
-                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-muted-foreground/30" />
+                {/* Camera notch */}
+                <div className="absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-zinc-900 border border-zinc-700" />
               </div>
+
+              {/* Lid back (visible when closed) */}
+              <div
+                className="absolute inset-0 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-t-xl"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)",
+                }}
+              />
             </div>
+
+            {/* Notebook Base (Keyboard) */}
+            <div
+              className="relative bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 rounded-b-xl border-x border-b border-zinc-600"
+              style={{
+                height: "24px",
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {/* Keyboard surface */}
+              <div className="absolute inset-x-3 top-1 bottom-2 bg-zinc-900/50 rounded-sm" />
+              {/* Trackpad */}
+              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-20 h-1 bg-zinc-700 rounded-full" />
+            </div>
+
+            {/* Hinge detail */}
+            <div 
+              className="absolute left-1/2 -translate-x-1/2 w-32 h-1 bg-zinc-600 rounded-full"
+              style={{ bottom: "24px", zIndex: 10 }}
+            />
 
             {/* Glow Effect */}
             <div
-              className="absolute -inset-10 -z-10 transition-all duration-300 pointer-events-none"
+              className="absolute -inset-16 -z-10 transition-all duration-300 pointer-events-none"
               style={{
-                background: `radial-gradient(ellipse at center, hsl(var(--primary) / ${glowIntensity * 0.3}) 0%, transparent 70%)`,
+                background: `radial-gradient(ellipse at center, hsl(var(--primary) / ${glowIntensity * 0.4}) 0%, transparent 70%)`,
               }}
             />
           </div>
 
           {/* Features Below Notebook */}
           <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 transition-all duration-500"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 transition-all duration-500"
             style={{
-              opacity: openProgress > 0.5 ? 1 : 0,
-              transform: `translateY(${(1 - openProgress) * 50}px)`,
+              opacity: openProgress > 0.6 ? 1 : 0,
+              transform: `translateY(${(1 - openProgress) * 40}px)`,
             }}
           >
             {[
@@ -253,7 +227,6 @@ const ParallaxNotebook = () => {
               <div
                 key={i}
                 className="text-center p-6 rounded-xl glass-effect hover-lift"
-                style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <feature.icon className="w-10 h-10 text-primary mx-auto mb-4" />
                 <h4 className="font-display text-xl text-foreground mb-2">

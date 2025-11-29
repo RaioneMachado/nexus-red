@@ -40,7 +40,7 @@ const Navbar = () => {
               <div className="absolute inset-0 bg-primary/50 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="font-display text-2xl tracking-wider text-foreground">
-              STREAM<span className="text-primary">X</span>
+              EURO<span className="text-primary">PLAYO</span>
             </span>
           </a>
 

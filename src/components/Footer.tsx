@@ -49,11 +49,11 @@ const Footer = () => {
                 <Play className="w-5 h-5 text-primary-foreground fill-current" />
               </div>
               <span className="font-display text-2xl tracking-wider text-foreground">
-                STREAM<span className="text-primary">X</span>
+                EURO<span className="text-primary">PLAYO</span>
               </span>
             </a>
             <p className="text-sm text-muted-foreground mb-6">
-              A plataforma mais avançada de streaming do Brasil. Filmes, séries e games em um só lugar.
+              A plataforma mais avançada de streaming. Filmes, séries e games em um só lugar.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, i) => (
@@ -93,7 +93,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 StreamX. Todos os direitos reservados.
+            © 2024 EuroPlayO. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
             <a
