@@ -170,24 +170,117 @@ const ParallaxNotebook = () => {
               />
             </div>
 
-            {/* Notebook Base (Keyboard) */}
+            {/* Notebook Base with Detailed Keyboard */}
             <div
-              className="relative bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 rounded-b-xl border-x border-b border-zinc-600"
+              className="relative bg-gradient-to-b from-zinc-700 via-zinc-800 to-zinc-900 rounded-b-xl border-x border-b border-zinc-600 pt-4 pb-6"
               style={{
-                height: "24px",
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* Keyboard surface */}
-              <div className="absolute inset-x-3 top-1 bottom-2 bg-zinc-900/50 rounded-sm" />
-              {/* Trackpad */}
-              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-20 h-1 bg-zinc-700 rounded-full" />
+              {/* Keyboard Container */}
+              <div className="relative mx-4 mb-3">
+                {/* Keyboard Surface */}
+                <div className="bg-zinc-900 rounded-lg p-3 border border-zinc-700">
+                  
+                  {/* Function Keys Row */}
+                  <div className="flex justify-between mb-2">
+                    {['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'].map((key, i) => (
+                      <div key={i} className="w-6 h-4 bg-zinc-800 rounded-sm flex items-center justify-center">
+                        <span className="text-[6px] text-zinc-400">{key}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Main Keyboard Rows */}
+                  <div className="space-y-1">
+                    {/* Number Row */}
+                    <div className="flex justify-between">
+                      {['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '⌫'].map((key, i) => (
+                        <div key={i} className={`w-6 h-6 bg-zinc-800 rounded flex items-center justify-center ${i === 13 ? 'w-12' : ''}`}>
+                          <span className="text-[8px] text-zinc-300">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* First Alpha Row */}
+                    <div className="flex justify-between">
+                      {['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'].map((key, i) => (
+                        <div key={i} className={`w-6 h-6 bg-zinc-800 rounded flex items-center justify-center ${i === 0 ? 'w-9' : i === 13 ? 'w-9' : ''}`}>
+                          <span className="text-[8px] text-zinc-300">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Second Alpha Row */}
+                    <div className="flex justify-between">
+                      {['Caps', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter'].map((key, i) => (
+                        <div key={i} className={`w-6 h-6 bg-zinc-800 rounded flex items-center justify-center ${i === 0 ? 'w-10' : i === 12 ? 'w-12' : ''}`}>
+                          <span className="text-[8px] text-zinc-300">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Third Alpha Row */}
+                    <div className="flex justify-between">
+                      {['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Shift'].map((key, i) => (
+                        <div key={i} className={`w-6 h-6 bg-zinc-800 rounded flex items-center justify-center ${i === 0 || i === 11 ? 'w-14' : ''}`}>
+                          <span className="text-[8px] text-zinc-300">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Space Bar Row */}
+                    <div className="flex justify-between">
+                      {['Ctrl', 'Win', 'Alt', '', 'Alt', 'Ctrl', '←', '↓', '→'].map((key, i) => (
+                        <div key={i} className={`h-6 bg-zinc-800 rounded flex items-center justify-center ${
+                          i === 3 ? 'w-32' : 
+                          i === 0 || i === 1 || i === 2 || i === 4 || i === 5 ? 'w-8' : 
+                          'w-6'
+                        }`}>
+                          <span className="text-[8px] text-zinc-300">{key}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Keyboard Reflection */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-lg pointer-events-none" />
+              </div>
+
+              {/* Trackpad Area */}
+              <div className="mx-8">
+                <div className="h-8 bg-zinc-800/50 rounded-lg border border-zinc-700 relative">
+                  {/* Trackpad Surface */}
+                  <div className="absolute inset-1 bg-zinc-900 rounded-md border border-zinc-700 flex items-center justify-center">
+                    <div className="w-12 h-0.5 bg-zinc-700 rounded-full" />
+                  </div>
+                  
+                  {/* Trackpad Buttons */}
+                  <div className="absolute -bottom-6 left-0 right-0 flex justify-between px-4">
+                    <div className="w-16 h-3 bg-zinc-700 rounded-t-sm" />
+                    <div className="w-16 h-3 bg-zinc-700 rounded-t-sm" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Status LEDs */}
+              <div className="absolute top-2 right-4 flex space-x-1">
+                <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse" />
+                <div className="w-1 h-1 bg-zinc-500 rounded-full" />
+                <div className="w-1 h-1 bg-zinc-500 rounded-full" />
+              </div>
+
+              {/* Brand Logo */}
+              <div className="absolute top-2 left-4">
+                <span className="text-[8px] text-zinc-500 font-mono">EUROPLAYO</span>
+              </div>
             </div>
 
             {/* Hinge detail */}
             <div 
               className="absolute left-1/2 -translate-x-1/2 w-32 h-1 bg-zinc-600 rounded-full"
-              style={{ bottom: "24px", zIndex: 10 }}
+              style={{ bottom: "calc(100% - 24px)", zIndex: 10 }}
             />
 
             {/* Glow Effect */}
