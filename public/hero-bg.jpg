@@ -1,1 +1,23 @@
 
+const HeroSection = () => {
+  return (
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/bg-img/hero-bg.jpg")', // ← Sua imagem
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+      </div>
+
+      {/* Resto do código permanece igual */}
+      <div className="relative z-10 container mx-auto px-4 pt-20">
+        {/* ... conteúdo do hero ... */}
+      </div>
+    </section>
+  );
+};
