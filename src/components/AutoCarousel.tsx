@@ -55,7 +55,7 @@ const AutoCarousel = ({ items, title, direction = "left", speed = 15 }: AutoCaro
           ref={scrollRef}
           className="flex gap-4 md:gap-6 px-4 md:px-8"
           style={{
-            animation: `carousel-scroll-${speed}s linear infinite`,
+            animation: `carousel-scroll ${speed}s linear infinite`,
             animationDirection: direction === "right" ? "reverse" : "normal",
             animationPlayState: isPaused ? "paused" : "running",
           }}
@@ -155,21 +155,9 @@ const AutoCarousel = ({ items, title, direction = "left", speed = 15 }: AutoCaro
         </div>
       </div>
 
-      {/* Custom Animation with dynamic speed */}
+      {/* Custom Animation */}
       <style jsx>{`
-        @keyframes carousel-scroll-15s {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - 1rem)); }
-        }
-        @keyframes carousel-scroll-20s {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - 1rem)); }
-        }
-        @keyframes carousel-scroll-25s {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - 1rem)); }
-        }
-        @keyframes carousel-scroll-30s {
+        @keyframes carousel-scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(calc(-50% - 1rem)); }
         }
