@@ -4,23 +4,17 @@ import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - SUA IMAGEM LOCAL */}
+      {/* Background Image com Efeito Parallax */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
         style={{
           backgroundImage: 'url("/Banner Euro Play.png")',
+          backgroundAttachment: 'fixed',
         }}
-      >
-        {/* Overlay removido - imagem ficará com opacidade total */}
-        
-        {/* Efeito sutil de gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
-      </div>
-
-      {/* Efeito de partículas sutil */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent animate-pulse" />
-      </div>
+      />
+      
+      {/* Overlay MUITO suave apenas para contraste do texto */}
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
