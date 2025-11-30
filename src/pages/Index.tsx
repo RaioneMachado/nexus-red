@@ -39,32 +39,10 @@ const Index = () => {
         {/* Parallax Notebook */}
         <ParallaxNotebook />
 
-        {/* Valores Section - NOVA SEÇÃO ADICIONADA */}
+        {/* SEÇÃO DE PLANOS - CORRIGIDA */}
         <SecaoValores 
-          titulo="Nossos Valores" 
-          subtitulo="O que nos move para entregar o melhor entretenimento"
-          valores={[
-            {
-              icone: "🎬",
-              titulo: "Qualidade",
-              descricao: "Conteúdo selecionado com excelência técnica e artística"
-            },
-            {
-              icone: "🚀",
-              titulo: "Inovação",
-              descricao: "Sempre buscando novas tecnologias e experiências"
-            },
-            {
-              icone: "🤝",
-              titulo: "Acessibilidade",
-              descricao: "Entretenimento de qualidade para todos os públicos"
-            },
-            {
-              icone: "⭐",
-              titulo: "Variedade",
-              descricao: "Diversidade de conteúdo para todos os gostos"
-            }
-          ]}
+          titulo="Escolha Seu Plano"
+          subtitulo="Assista onde quiser. Cancele quando quiser."
         />
 
         {/* Series Section */}
