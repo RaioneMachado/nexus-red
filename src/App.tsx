@@ -25,3 +25,29 @@ const App = () => (
 );
 
 export default App;
+import React from 'react';
+import SecaoValores from './components/secaovalores';
+
+function App() {
+  return (
+    <div className="App">
+      {/* Suas outras seções existentes */}
+      <SecaoValores />
+      {/* Ou com props customizadas: */}
+      {/* <SecaoValores 
+        titulo="Nossos Princípios" 
+        subtitulo="Valores que nos guiam todos os dias"
+        valores={[
+          {
+            icone: "🚀",
+            titulo: "Inovação",
+            descricao: "Sempre buscando novas soluções"
+          },
+          // ... outros valores
+        ]}
+      /> */}
+    </div>
+  );
+}
+
+export default App;
