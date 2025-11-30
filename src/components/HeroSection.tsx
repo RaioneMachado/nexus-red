@@ -14,7 +14,7 @@ const HeroSection = () => {
       />
       
       {/* Overlay MUITO suave apenas para contraste do texto */}
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/30" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
