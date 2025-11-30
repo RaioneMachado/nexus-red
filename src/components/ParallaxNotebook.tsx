@@ -21,7 +21,7 @@ const ParallaxNotebook = () => {
       // Progress from 0 (closed) to 1 (fully open)
       // Mobile: starts at 90% and finishes at 60% of viewport
       // Desktop: starts at 80% and finishes at 50% of viewport
-      const startOpen = isMobile ? viewportHeight * 0.6 : viewportHeight * 0.8;
+      const startOpen = isMobile ? viewportHeight * 0.8 : viewportHeight * 0.8;
       const fullyOpen = isMobile ? viewportHeight * 0.6 : viewportHeight * 0.5;
 
       if (sectionCenter > startOpen) {
