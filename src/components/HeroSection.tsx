@@ -11,7 +11,7 @@ const HeroSection = () => {
           backgroundImage: 'url("/Banner Euro Play.png")',
         }}
       >
-     {/* Overlay removido - imagem ficará com opacidade total */}
+        {/* Overlay removido - imagem ficará com opacidade total */}
         
         {/* Efeito sutil de gradiente */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
@@ -28,7 +28,7 @@ const HeroSection = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-600/20 backdrop-blur-sm border border-red-500/30 mb-8 animate-fade-in">
             <Zap className="w-4 h-4 text-red-400" />
-            <span className="text-sm text-red-200">
+            <span className="text-sm text-red-200 font-sans">
               Tecnologia de ponta em streaming
             </span>
           </div>
@@ -43,7 +43,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p
-            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 animate-slide-up leading-relaxed"
+            className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 animate-slide-up leading-relaxed font-sans"
             style={{ animationDelay: "0.1s" }}
           >
             Filmes em 4K, séries exclusivas e os melhores games. Experimente a
@@ -58,7 +58,7 @@ const HeroSection = () => {
             <Button 
               variant="hero" 
               size="xl" 
-              className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold"
+              className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold font-sans"
             >
               <Play className="w-5 h-5 fill-current mr-2" />
               Começar Agora
@@ -66,7 +66,7 @@ const HeroSection = () => {
             <Button 
               variant="glass" 
               size="xl" 
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border-white/20 font-sans"
             >
               Ver Catálogo
             </Button>
@@ -99,21 +99,11 @@ const HeroSection = () => {
                 className="flex flex-col items-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-red-500/30 transition-all duration-300 hover:transform hover:scale-105"
               >
                 <feature.icon className="w-8 h-8 text-red-400 mb-3" />
-                <span className="font-semibold text-white mb-1">{feature.label}</span>
-                <span className="text-sm text-gray-300">{feature.desc}</span>
+                <span className="font-semibold text-white mb-1 font-sans">{feature.label}</span>
+                <span className="text-sm text-gray-300 font-sans">{feature.desc}</span>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-xs text-gray-400 uppercase tracking-wider">
-          Role para descobrir
-        </span>
-        <div className="w-6 h-10 rounded-full border-2 border-gray-400/50 flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-red-500 rounded-full animate-pulse" />
         </div>
       </div>
     </section>
