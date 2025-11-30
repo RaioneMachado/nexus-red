@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image com Efeito Parallax */}
+      {/* Background Image Responsiva */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/Banner Euro Play.png")',
-          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'scroll', // Remove fixed no mobile
         }}
       />
       
@@ -100,6 +102,15 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* CSS para parallax apenas no desktop */}
+      <style jsx>{`
+        @media (min-width: 768px) {
+          #hero div:first-child {
+            background-attachment: fixed !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
