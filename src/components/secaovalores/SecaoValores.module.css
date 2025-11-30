@@ -1,7 +1,19 @@
-.secaoValores {
+.secaoPlanos {
   padding: 5rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #141414;
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.secaoPlanos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E50914, #B81D24, #E50914);
 }
 
 .container {
@@ -16,64 +28,169 @@
 }
 
 .titulo {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 900;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #fff, #f0f0f0);
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: linear-gradient(45deg, #fff, #E50914);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -1px;
 }
 
 .subtitulo {
-  font-size: 1.25rem;
-  opacity: 0.9;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
 }
 
-.valoresGrid {
+.planosGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+  margin-bottom: 3rem;
 }
 
-.valorItem {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  padding: 2rem;
+.planoCard {
+  background: rgba(45, 45, 45, 0.8);
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
+  position: relative;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.valorItem:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.15);
+.planoCard:hover {
+  transform: translateY(-8px);
+  border-color: #E50914;
+  box-shadow: 0 20px 40px rgba(229, 9, 20, 0.2);
 }
 
-.icone {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+.planoPopular {
+  border: 2px solid #E50914;
+  transform: scale(1.05);
+  background: rgba(45, 45, 45, 0.9);
 }
 
-.valorTitulo {
+.planoPopular:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #E50914;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.planoHeader {
+  margin-bottom: 2rem;
+}
+
+.planoNome {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: white;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.valorDescricao {
+.precoContainer {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.preco {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+
+.periodo {
   font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.9;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.economiza {
+  color: #46d369;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  text-align: left;
+}
+
+.beneficio {
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.beneficio:last-child {
+  border-bottom: none;
+}
+
+.botaoAssinar {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: #E50914;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.botaoAssinar:hover {
+  background: #F40612;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(229, 9, 20, 0.4);
+}
+
+.notaRodape {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notaRodape p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 /* Responsivo */
 @media (max-width: 768px) {
-  .secaoValores {
+  .secaoPlanos {
     padding: 3rem 0;
   }
   
@@ -81,12 +198,20 @@
     font-size: 2.5rem;
   }
   
-  .valoresGrid {
+  .planosGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
-  .valorItem {
-    padding: 1.5rem;
+  .planoPopular {
+    transform: none;
+  }
+  
+  .planoPopular:hover {
+    transform: translateY(-8px);
+  }
+  
+  .preco {
+    font-size: 2.5rem;
   }
 }
