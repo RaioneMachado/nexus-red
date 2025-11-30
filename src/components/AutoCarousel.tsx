@@ -18,7 +18,7 @@ interface AutoCarouselProps {
   speed?: number;
 }
 
-const AutoCarousel = ({ items, title, direction = "left", speed = 20 }: AutoCarouselProps) => {
+const AutoCarousel = ({ items, title, direction = "left", speed = 10 }: AutoCarouselProps) => {
   const [isPaused, setIsPaused] = useState(false);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
