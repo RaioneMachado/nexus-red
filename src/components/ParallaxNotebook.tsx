@@ -10,23 +10,26 @@ const ParallaxNotebook = () => {
       if (!sectionRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height;
       const viewportHeight = window.innerHeight;
       const isMobile = window.innerWidth < 768;
 
       // Calculate when section enters and leaves viewport
       const sectionTop = rect.top;
+      const sectionCenter = sectionTop + sectionHeight / 2;
 
       // Progress from 0 (closed) to 1 (fully open)
-      // Adjusted for mobile - starts earlier and finishes earlier
-      const startOpen = isMobile ? viewportHeight * 0.8 : viewportHeight * 0.8;
-      const fullyOpen = isMobile ? viewportHeight * 0.4 : viewportHeight * 0.5;
+      // Mobile: starts at 90% and finishes at 60% of viewport
+      // Desktop: starts at 80% and finishes at 50% of viewport
+      const startOpen = isMobile ? viewportHeight * 0.9 : viewportHeight * 0.8;
+      const fullyOpen = isMobile ? viewportHeight * 0.6 : viewportHeight * 0.5;
 
-      if (sectionTop > startOpen) {
+      if (sectionCenter > startOpen) {
         setOpenProgress(0);
-      } else if (sectionTop < fullyOpen) {
+      } else if (sectionCenter < fullyOpen) {
         setOpenProgress(1);
       } else {
-        const progress = 1 - (sectionTop - fullyOpen) / (startOpen - fullyOpen);
+        const progress = 1 - (sectionCenter - fullyOpen) / (startOpen - fullyOpen);
         setOpenProgress(Math.max(0, Math.min(1, progress)));
       }
     };
