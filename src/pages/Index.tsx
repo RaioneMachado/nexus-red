@@ -4,6 +4,7 @@ import AutoCarousel from "@/components/AutoCarousel";
 import ParallaxNotebook from "@/components/ParallaxNotebook";
 import ContentSection from "@/components/ContentSection";
 import Footer from "@/components/Footer";
+import SecaoValores from "@/components/secaovalores";
 import { featuredMovies, carouselMovies, series, games } from "@/data/content";
 
 const Index = () => {
@@ -37,6 +38,34 @@ const Index = () => {
 
         {/* Parallax Notebook */}
         <ParallaxNotebook />
+
+        {/* Valores Section - NOVA SEÇÃO ADICIONADA */}
+        <SecaoValores 
+          titulo="Nossos Valores" 
+          subtitulo="O que nos move para entregar o melhor entretenimento"
+          valores={[
+            {
+              icone: "🎬",
+              titulo: "Qualidade",
+              descricao: "Conteúdo selecionado com excelência técnica e artística"
+            },
+            {
+              icone: "🚀",
+              titulo: "Inovação",
+              descricao: "Sempre buscando novas tecnologias e experiências"
+            },
+            {
+              icone: "🤝",
+              titulo: "Acessibilidade",
+              descricao: "Entretenimento de qualidade para todos os públicos"
+            },
+            {
+              icone: "⭐",
+              titulo: "Variedade",
+              descricao: "Diversidade de conteúdo para todos os gostos"
+            }
+          ]}
+        />
 
         {/* Series Section */}
         <section id="series" className="bg-gradient-to-b from-background to-card">
