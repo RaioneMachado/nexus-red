@@ -129,16 +129,16 @@ const ParallaxNotebook = () => {
                             <Play className="w-2 h-2 md:w-4 md:h-4 text-white fill-current" />
                           </div>
                           <span className="font-sans text-xs md:text-lg text-white font-bold">
-                            EURO<span className="text-red-500">PLAYO</span>
+                            EURO<span className="text-red-500">PLAY</span>
                           </span>
                         </div>
                         
                         {/* Featured info */}
                         <h3 className="font-sans text-sm md:text-2xl text-white mb-1 font-bold">
-                          STREAMING DE QUALIDADE
+                          VEJA COMO É O NOSSO APP NA TV
                         </h3>
                         <p className="text-xs md:text-sm text-gray-300 font-sans">
-                          Filmes • Séries • Games
+                          Filmes • Séries • Canais Ao Vivo
                         </p>
                       </div>
                     </div>
