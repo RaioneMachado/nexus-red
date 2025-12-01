@@ -1,147 +1,156 @@
 .secaoPlanos {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #1a1a1a 100%);
+  padding: 5rem 0;
+  background: linear-gradient(to bottom, #0f0f0f 0%, #1a1a1a 100%);
   color: white;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
 }
 
-/* Efeito de luz de holofote no fundo */
 .secaoPlanos::before {
   content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(229, 9, 20, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 70% 70%, rgba(184, 29, 36, 0.08) 0%, transparent 50%);
-  animation: rotateBackground 60s linear infinite;
-  z-index: 0;
-}
-
-/* Efeito de partículas/flocos de cinema */
-.secaoPlanos::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.1) 1px, transparent 0),
-    radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.1) 1px, transparent 0),
-    radial-gradient(1px 1px at 60px 20px, rgba(255, 255, 255, 0.1) 1px, transparent 0),
-    radial-gradient(2px 2px at 90px 50px, rgba(255, 255, 255, 0.15) 1px, transparent 0),
-    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.1) 1px, transparent 0),
-    radial-gradient(2px 2px at 160px 20px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
-  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px;
-  animation: particleMove 30s linear infinite;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Barra superior com efeito de neon */
-.secaoPlanos .topBar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    #E50914 20%, 
-    #ff6b6b 40%, 
-    #E50914 60%, 
-    #ff6b6b 80%, 
-    transparent 100%);
-  box-shadow: 0 0 15px rgba(229, 9, 20, 0.7);
-  z-index: 10;
-  animation: neonPulse 2s ease-in-out infinite alternate;
+  background: linear-gradient(90deg, #E50914, #B81D24, #E50914);
 }
 
 .container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  position: relative;
-  z-index: 1;
+  padding: 0 1.5rem;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 5rem;
-  position: relative;
+  margin-bottom: 4rem;
 }
 
 .titulo {
-  font-size: 4.2rem;
+  font-size: 3.5rem;
   font-weight: 900;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: linear-gradient(45deg, #fff 20%, #E50914 40%, #fff 60%, #E50914 80%, #fff 100%);
-  background-size: 300% 300%;
+  background: linear-gradient(45deg, #fff, #E50914);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -1.5px;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  animation: gradientShift 4s ease infinite;
-  position: relative;
-  display: inline-block;
-}
-
-.titulo::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #E50914, transparent);
-  border-radius: 2px;
+  letter-spacing: -1px;
 }
 
 .subtitulo {
-  font-size: 1.6rem;
-  opacity: 0.9;
+  font-size: 1.5rem;
+  opacity: 0.8;
   font-weight: 300;
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
+}
+
+/* Seletor de Período (Estilo HBO) */
+.seletorPeriodo {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 4rem;
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 12px;
+  padding: 0.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.periodoOpcao {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
   position: relative;
-  padding: 1.5rem;
-  background: rgba(20, 20, 20, 0.7);
-  border-radius: 10px;
-  border-left: 3px solid #E50914;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
+  overflow: hidden;
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.periodoOpcao:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.periodoOpcao.ativo {
+  color: white;
+  background: linear-gradient(135deg, #E50914, #B81D24);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.periodoOpcao.ativo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Contêiner dos cards */
+.planosContainer {
+  position: relative;
+  min-height: 600px;
 }
 
 .planosGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  margin-bottom: 4rem;
-  perspective: 1000px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Esconde os grids que não estão ativos */
+.planosGrid[data-periodo] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.planosGrid.ativo {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* Cards melhorados */
 .planoCard {
-  background: linear-gradient(145deg, rgba(35, 35, 35, 0.85), rgba(25, 25, 25, 0.95));
+  background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(25, 25, 25, 0.98));
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 3rem 2.5rem;
+  padding: 2.5rem 2rem;
   text-align: center;
   position: relative;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .planoCard::before {
@@ -150,8 +159,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #E50914, #ff6b6b, #E50914);
+  height: 4px;
+  background: linear-gradient(90deg, #E50914, #B81D24);
   z-index: 2;
 }
 
@@ -162,17 +171,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(229, 9, 20, 0.03) 50%, transparent 70%);
-  z-index: -1;
+  background: linear-gradient(45deg, transparent 40%, rgba(229, 9, 20, 0.03) 50%, transparent 60%);
   opacity: 0;
   transition: opacity 0.5s ease;
+  z-index: -1;
 }
 
 .planoCard:hover {
-  transform: translateY(-15px) rotateX(5deg);
-  border-color: #E50914;
-  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.25), 
-              0 0 30px rgba(229, 9, 20, 0.1) inset;
+  transform: translateY(-10px);
+  border-color: rgba(229, 9, 20, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(229, 9, 20, 0.1);
 }
 
 .planoCard:hover::after {
@@ -181,38 +190,36 @@
 
 .planoPopular {
   border: 2px solid #E50914;
-  transform: scale(1.05);
-  background: linear-gradient(145deg, rgba(45, 25, 27, 0.9), rgba(35, 15, 17, 0.95));
-  box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3),
-              0 0 40px rgba(229, 9, 20, 0.1) inset;
-  animation: popularGlow 3s ease-in-out infinite alternate;
+  background: linear-gradient(145deg, rgba(45, 25, 27, 0.95), rgba(35, 15, 17, 0.98));
+  box-shadow: 0 15px 35px rgba(229, 9, 20, 0.2),
+              0 0 0 1px rgba(229, 9, 20, 0.2);
 }
 
 .planoPopular:hover {
-  transform: scale(1.05) translateY(-15px) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3),
+              0 0 0 1px rgba(229, 9, 20, 0.3);
 }
 
 .popularBadge {
   position: absolute;
-  top: -15px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, #E50914, #ff6b6b);
+  background: linear-gradient(90deg, #E50914, #B81D24);
   color: white;
-  padding: 0.7rem 2rem;
+  padding: 0.6rem 2rem;
   border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.5);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
   z-index: 3;
-  animation: badgeFloat 3s ease-in-out infinite;
 }
 
 .planoHeader {
-  margin-bottom: 2.5rem;
-  position: relative;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
 }
 
 .planoNome {
@@ -221,7 +228,7 @@
   margin-bottom: 1.5rem;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   position: relative;
   display: inline-block;
   padding-bottom: 10px;
@@ -233,7 +240,7 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  width: 40px;
   height: 3px;
   background: #E50914;
   border-radius: 2px;
@@ -243,32 +250,30 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  position: relative;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .preco {
-  font-size: 4.5rem;
+  font-size: 3.8rem;
   font-weight: 900;
   color: #fff;
   line-height: 1;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   position: relative;
-  display: inline-block;
 }
 
 .preco::before {
   content: 'R$';
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   position: absolute;
   top: 10px;
-  left: -30px;
-  opacity: 0.8;
+  left: -25px;
+  opacity: 0.9;
 }
 
 .periodo {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0.8;
   font-weight: 400;
   margin-left: 5px;
@@ -277,47 +282,42 @@
 .economiza {
   color: #46d369;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   background: rgba(70, 211, 105, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   display: inline-block;
   margin-top: 0.5rem;
-  animation: pulseGreen 2s infinite;
 }
 
 .beneficios {
   list-style: none;
   padding: 0;
-  margin: 0 0 3rem 0;
+  margin: 0 0 2.5rem 0;
   text-align: left;
-  position: relative;
+  flex-grow: 1;
 }
 
 .beneficios::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
+  display: block;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(229, 9, 20, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 1.5rem 0;
 }
 
 .beneficio {
-  padding: 1rem 0;
-  font-size: 1.1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.95);
+  padding: 0.85rem 0;
+  font-size: 1.05rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.9);
   position: relative;
-  padding-left: 2.5rem;
+  padding-left: 2rem;
   transition: all 0.3s ease;
 }
 
-.beneficio:hover {
-  color: white;
-  padding-left: 3rem;
+.beneficio:last-child {
+  border-bottom: none;
 }
 
 .beneficio::before {
@@ -326,32 +326,31 @@
   left: 0;
   color: #46d369;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
-.beneficio:last-child {
-  border-bottom: none;
+.beneficio:hover {
+  padding-left: 2.5rem;
+  color: white;
 }
 
 .botaoAssinar {
   width: 100%;
-  padding: 1.5rem 2rem;
-  background: linear-gradient(90deg, #E50914, #B81D24, #E50914);
-  background-size: 200% 100%;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(90deg, #E50914, #B81D24);
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  font-weight: 800;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
-  z-index: 1;
+  flex-shrink: 0;
 }
 
 .botaoAssinar::before {
@@ -362,14 +361,13 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.7s ease;
-  z-index: -1;
+  transition: left 0.6s ease;
 }
 
 .botaoAssinar:hover {
-  background-position: 100% 0;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(229, 9, 20, 0.5);
+  background: linear-gradient(90deg, #F40612, #C81D24);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
 }
 
 .botaoAssinar:hover::before {
@@ -377,122 +375,71 @@
 }
 
 .botaoAssinar:active {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .notaRodape {
   text-align: center;
   padding-top: 3rem;
+  margin-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
 }
 
 .notaRodape::before {
-  content: '🎬';
+  content: '💡';
   position: absolute;
   top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2rem;
-  background: #141414;
+  font-size: 1.5rem;
+  background: #1a1a1a;
   padding: 0 1rem;
 }
 
 .notaRodape p {
-  opacity: 0.8;
-  font-size: 1rem;
+  opacity: 0.7;
+  font-size: 0.95rem;
   font-style: italic;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
-  background: rgba(20, 20, 20, 0.7);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Animações */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes neonPulse {
-  0% { box-shadow: 0 0 15px rgba(229, 9, 20, 0.7); }
-  100% { box-shadow: 0 0 25px rgba(229, 9, 20, 0.9), 0 0 35px rgba(229, 9, 20, 0.5); }
+.planoCard {
+  animation: fadeInUp 0.5s ease forwards;
 }
 
-@keyframes popularGlow {
-  0% { box-shadow: 0 15px 40px rgba(229, 9, 20, 0.3), 0 0 40px rgba(229, 9, 20, 0.1) inset; }
-  100% { box-shadow: 0 15px 50px rgba(229, 9, 20, 0.5), 0 0 50px rgba(229, 9, 20, 0.2) inset; }
-}
-
-@keyframes badgeFloat {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-5px); }
-}
-
-@keyframes pulseGreen {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes rotateBackground {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes particleMove {
-  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
-  100% { background-position: 200px 200px, 400px 400px, 600px 600px, 800px 800px, 1000px 1000px, 1200px 1200px; }
-}
-
-/* Efeito de brilho nos cards */
-.planoCard .shine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.planoCard:hover .shine {
-  opacity: 1;
-}
+.planoCard:nth-child(1) { animation-delay: 0.1s; }
+.planoCard:nth-child(2) { animation-delay: 0.2s; }
+.planoCard:nth-child(3) { animation-delay: 0.3s; }
 
 /* Responsivo */
-@media (max-width: 1200px) {
-  .planosGrid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  }
-}
-
 @media (max-width: 992px) {
-  .titulo {
-    font-size: 3.5rem;
-  }
-  
   .planosGrid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .planoPopular {
-    transform: none;
-  }
-  
-  .planoPopular:hover {
-    transform: translateY(-15px) rotateX(5deg);
+  .planosGrid[data-periodo] {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .secaoPlanos {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
   
   .titulo {
@@ -501,51 +448,43 @@
   
   .subtitulo {
     font-size: 1.3rem;
-    padding: 1.2rem;
   }
   
   .planosGrid {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 500px;
-    margin: 0 auto 4rem;
+    gap: 2rem;
   }
   
-  .preco {
-    font-size: 3.5rem;
+  .planosGrid[data-periodo] {
+    grid-template-columns: 1fr;
   }
   
-  .preco::before {
-    font-size: 1.2rem;
-    left: -25px;
-    top: 8px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1.2rem;
+  .seletorPeriodo {
+    flex-direction: column;
+    max-width: 300px;
   }
   
-  .titulo {
-    font-size: 2.3rem;
-  }
-  
-  .subtitulo {
-    font-size: 1.1rem;
+  .periodoOpcao {
     padding: 1rem;
   }
   
-  .planoCard {
-    padding: 2.5rem 1.8rem;
+  .periodoOpcao.ativo::after {
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 3px;
+    height: 100%;
   }
   
   .preco {
     font-size: 3rem;
   }
   
-  .botaoAssinar {
-    padding: 1.3rem 1.5rem;
-    font-size: 1.1rem;
+  .planoPopular {
+    transform: none;
+  }
+  
+  .planoPopular:hover {
+    transform: translateY(-10px);
   }
 }
