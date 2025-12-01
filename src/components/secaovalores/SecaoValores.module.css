@@ -1,3 +1,5 @@
+/* SecaoValores.module.css */
+
 .secaoPlanos {
   padding: 5rem 0;
   background: linear-gradient(to bottom, #0f0f0f 0%, #1a1a1a 100%);
@@ -47,7 +49,7 @@
   margin: 0 auto;
 }
 
-/* Seletor de Período (Estilo HBO) */
+/* Seletor de Período */
 .seletorPeriodo {
   display: flex;
   justify-content: center;
@@ -116,24 +118,6 @@
   opacity: 1;
   transform: translateY(0);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Esconde os grids que não estão ativos */
-.planosGrid[data-periodo] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
-
-.planosGrid.ativo {
-  position: relative;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
 }
 
 /* Cards melhorados */
@@ -431,10 +415,6 @@
   .planosGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .planosGrid[data-periodo] {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -453,10 +433,8 @@
   .planosGrid {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-  
-  .planosGrid[data-periodo] {
-    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
   }
   
   .seletorPeriodo {
@@ -486,5 +464,23 @@
   
   .planoPopular:hover {
     transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .titulo {
+    font-size: 2.3rem;
+  }
+  
+  .subtitulo {
+    font-size: 1.1rem;
+  }
+  
+  .planoCard {
+    padding: 2rem 1.5rem;
   }
 }
