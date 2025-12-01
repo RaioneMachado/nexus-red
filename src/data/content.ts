@@ -34,11 +34,11 @@ export const featuredMovies = [
   },
   {
     id: 5,
-    title: "Última Fronteira",
-    image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=900&fit=crop",
-    rating: 8.9,
-    year: "2024",
-    genre: "Aventura",
+    title: "A Hora do Mal",
+    image: "/A Hora do Mal Capa Europlay.png",
+    rating: 7.5,
+    year: "2025",
+    genre: "Terror",
   },
 ];
 
