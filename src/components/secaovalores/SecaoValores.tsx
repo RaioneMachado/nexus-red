@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './SecaoValores.module.css';
 
 interface Plano {
   nome: string;
-  precoMensal: string;
-  precoTrimestral: string;
-  precoAnual: string;
+  preco: string;
   periodo: string;
-  economiza?: string;
+  descricao: string;
   popular?: boolean;
   beneficios: string[];
   corDestaque: string;
@@ -22,86 +20,61 @@ const SecaoValores: React.FC<SecaoValoresProps> = ({
   titulo = "Escolha Seu Plano",
   subtitulo = "Assista onde quiser. Cancele quando quiser."
 }) => {
-  const [periodoAtivo, setPeriodoAtivo] = useState<'mensal' | 'trimestral' | 'anual'>('mensal');
-
   const planos: Plano[] = [
     {
-      nome: "BÁSICO",
-      precoMensal: "19,90",
-      precoTrimestral: "52,90",
-      precoAnual: "189,90",
-      periodo: "mês",
+      nome: "GRÁTIS",
+      preco: "0,00",
+      periodo: "12 horas",
+      descricao: "Teste gratuitamente",
       beneficios: [
-        "1 tela simultânea",
+        "Acesso limitado por 12 horas",
         "Qualidade HD",
-        "Assista no celular ou tablet",
-        "Filmes e séries ilimitados",
-        "Suporte 24/7"
+        "1 tela simultânea",
+        "Catálogo completo disponível",
+        "Sem necessidade de cartão"
       ],
-      corDestaque: "#E50914"
+      corDestaque: "#46d369"
     },
     {
-      nome: "PADRÃO",
-      precoMensal: "29,90",
-      precoTrimestral: "79,90",
-      precoAnual: "279,90",
+      nome: "MENSAL",
+      preco: "34,90",
       periodo: "mês",
-      economiza: "Economize 10%",
+      descricao: "Plano mais popular",
       popular: true,
       beneficios: [
+        "Acesso ilimitado",
+        "Qualidade Full HD 4K",
         "2 telas simultâneas",
-        "Qualidade Full HD",
-        "Assista em qualquer dispositivo",
-        "Filmes e séries ilimitados",
-        "Downloads para assistir offline",
-        "Suporte prioritário"
+        "Download para assistir offline",
+        "Suporte prioritário 24/7",
+        "Cancelamento a qualquer momento"
       ],
       corDestaque: "#E50914"
     },
     {
-      nome: "PREMIUM",
-      precoMensal: "39,90",
-      precoTrimestral: "104,90",
-      precoAnual: "379,90",
-      periodo: "mês",
-      economiza: "Economize 15%",
+      nome: "TRIMESTRAL",
+      preco: "89,90",
+      periodo: "3 meses",
+      descricao: "Economize 15%",
       beneficios: [
+        "Acesso ilimitado",
+        "Qualidade Full HD 4K",
         "4 telas simultâneas",
-        "Qualidade 4K Ultra HD",
-        "Assista em qualquer dispositivo",
-        "Filmes e séries ilimitados",
         "Downloads ilimitados",
         "Conteúdo exclusivo",
-        "Suporte VIP 24/7"
+        "Suporte VIP 24/7",
+        "Cancelamento a qualquer momento"
       ],
       corDestaque: "#E50914"
     }
   ];
 
-  const getPrecoPorPeriodo = (plano: Plano) => {
-    switch (periodoAtivo) {
-      case 'mensal':
-        return { preco: plano.precoMensal, periodo: '/mês' };
-      case 'trimestral':
-        return { preco: plano.precoTrimestral, periodo: '/trimestre' };
-      case 'anual':
-        return { preco: plano.precoAnual, periodo: '/ano' };
-      default:
-        return { preco: plano.precoMensal, periodo: '/mês' };
+  const handleAssinarClick = (planoNome: string, preco: string) => {
+    if (planoNome === "GRÁTIS") {
+      alert(`🎬 Você ativou o teste gratuito de 12 horas!`);
+    } else {
+      alert(`💰 Você escolheu o plano ${planoNome} por R$ ${preco}`);
     }
-  };
-
-  const getPeriodoTexto = () => {
-    switch (periodoAtivo) {
-      case 'mensal': return 'Mensal';
-      case 'trimestral': return 'Trimestral';
-      case 'anual': return 'Anual';
-      default: return 'Mensal';
-    }
-  };
-
-  const handleAssinarClick = (planoNome: string) => {
-    alert(`Você escolheu o plano ${planoNome} no período ${getPeriodoTexto()}`);
     // Aqui você pode implementar a lógica de redirecionamento ou modal de pagamento
   };
 
@@ -113,84 +86,60 @@ const SecaoValores: React.FC<SecaoValoresProps> = ({
           <p className={styles.subtitulo}>{subtitulo}</p>
         </div>
         
-        {/* Seletor de Período */}
-        <div className={styles.seletorPeriodo}>
-          <button
-            className={`${styles.periodoOpcao} ${periodoAtivo === 'mensal' ? styles.ativo : ''}`}
-            onClick={() => setPeriodoAtivo('mensal')}
-          >
-            Plano Mensal
-          </button>
-          <button
-            className={`${styles.periodoOpcao} ${periodoAtivo === 'trimestral' ? styles.ativo : ''}`}
-            onClick={() => setPeriodoAtivo('trimestral')}
-          >
-            Plano Trimestral
-          </button>
-          <button
-            className={`${styles.periodoOpcao} ${periodoAtivo === 'anual' ? styles.ativo : ''}`}
-            onClick={() => setPeriodoAtivo('anual')}
-          >
-            Plano Anual
-          </button>
-        </div>
-
-        <div className={styles.planosContainer}>
-          <div className={styles.planosGrid}>
-            {planos.map((plano, index) => {
-              const precoInfo = getPrecoPorPeriodo(plano);
-              
-              return (
+        <div className={styles.planosGrid}>
+          {planos.map((plano, index) => (
+            <div 
+              key={index} 
+              className={`${styles.planoCard} ${plano.popular ? styles.planoPopular : ''}`}
+              style={{ 
+                borderColor: plano.popular ? plano.corDestaque : 'rgba(255, 255, 255, 0.1)',
+                borderTopColor: plano.corDestaque
+              }}
+            >
+              {plano.popular && (
                 <div 
-                  key={index} 
-                  className={`${styles.planoCard} ${plano.popular ? styles.planoPopular : ''}`}
+                  className={styles.popularBadge}
+                  style={{ backgroundColor: plano.corDestaque }}
                 >
-                  {plano.popular && (
-                    <div 
-                      className={styles.popularBadge}
-                      style={{ background: `linear-gradient(90deg, ${plano.corDestaque}, #B81D24)` }}
-                    >
-                      MAIS POPULAR
-                    </div>
-                  )}
-                  
-                  <div className={styles.planoHeader}>
-                    <h3 className={styles.planoNome}>{plano.nome}</h3>
-                    <div className={styles.precoContainer}>
-                      <span className={styles.preco}>R$ {precoInfo.preco}</span>
-                      <span className={styles.periodo}>{precoInfo.periodo}</span>
-                    </div>
-                    {plano.economiza && (
-                      <p className={styles.economiza}>{plano.economiza}</p>
-                    )}
-                  </div>
-
-                  <ul className={styles.beneficios}>
-                    {plano.beneficios.map((beneficio, beneficioIndex) => (
-                      <li key={beneficioIndex} className={styles.beneficio}>
-                        {beneficio}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button 
-                    className={styles.botaoAssinar}
-                    style={{ 
-                      background: `linear-gradient(90deg, ${plano.corDestaque}, #B81D24)`,
-                      border: `1px solid ${plano.corDestaque}`
-                    }}
-                    onClick={() => handleAssinarClick(plano.nome)}
-                  >
-                    ASSINAR AGORA
-                  </button>
+                  MAIS ESCOLHIDO
                 </div>
-              );
-            })}
-          </div>
+              )}
+              
+              <div className={styles.planoHeader}>
+                <h3 className={styles.planoNome}>{plano.nome}</h3>
+                <div className={styles.precoContainer}>
+                  <span className={styles.preco}>R$ {plano.preco}</span>
+                  <span className={styles.periodo}>/{plano.periodo}</span>
+                </div>
+                <p className={styles.descricao}>{plano.descricao}</p>
+              </div>
+
+              <ul className={styles.beneficios}>
+                {plano.beneficios.map((beneficio, beneficioIndex) => (
+                  <li key={beneficioIndex} className={styles.beneficio}>
+                    <span className={styles.checkIcon}>✓</span>
+                    {beneficio}
+                  </li>
+                ))}
+              </ul>
+
+              <button 
+                className={styles.botaoAssinar}
+                style={{ 
+                  backgroundColor: plano.corDestaque,
+                  borderColor: plano.corDestaque
+                }}
+                onClick={() => handleAssinarClick(plano.nome, plano.preco)}
+              >
+                {plano.nome === "GRÁTIS" ? "TESTAR GRÁTIS" : "ASSINAR AGORA"}
+              </button>
+            </div>
+          ))}
         </div>
 
         <div className={styles.notaRodape}>
-          <p>*Todos os planos incluem 7 dias grátis para teste. Cancele quando quiser.</p>
+          <p>*O plano gratuito oferece 12 horas de acesso completo. Não é necessário cartão de crédito.</p>
+          <p>*Após o período gratuito, escolha um dos planos para continuar assistindo.</p>
         </div>
       </div>
     </section>
