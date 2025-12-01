@@ -115,7 +115,7 @@ const ParallaxNotebook = () => {
                   >
                     {/* Main Image */}
                     <img
-                      src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=1200&h=750&fit=crop"
+                      src="/CapadenotebookEuroplay.png"
                       alt="EuroPlayO Platform"
                       className="w-full h-full object-cover"
                     />
