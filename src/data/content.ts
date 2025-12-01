@@ -18,7 +18,7 @@ export const featuredMovies = [
   },
   {
     id: 3,
-    title: "Invocaação do Mal 4",
+    title: "Invocação do Mal 4",
     image: "/Capa Invocação Do Mal 4 Europlay.png",
     rating: 6.2,
     year: "2025",
