@@ -85,7 +85,7 @@ export const carouselMovies = [
   },
   {
     id: 11,
-    title: "Aurora Boreal",
+    title: "Madagascar",
     image: "/Madagascar Carrossel.png",
     rating: 6.9,
     year: "2005",
