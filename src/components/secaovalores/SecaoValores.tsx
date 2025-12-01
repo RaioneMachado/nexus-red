@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './SecaoValores.module.css';
 
 interface Plano {
   nome: string;
-  preco: string;
+  precoMensal: string;
+  precoTrimestral: string;
+  precoAnual: string;
   periodo: string;
   economiza?: string;
   popular?: boolean;
@@ -20,54 +22,88 @@ const SecaoValores: React.FC<SecaoValoresProps> = ({
   titulo = "Escolha Seu Plano",
   subtitulo = "Assista onde quiser. Cancele quando quiser."
 }) => {
+  const [periodoAtivo, setPeriodoAtivo] = useState<'mensal' | 'trimestral' | 'anual'>('mensal');
+
   const planos: Plano[] = [
     {
-      nome: "SEMANAL",
-      preco: "8,90",
-      periodo: "semana",
-      economiza: "Ideal para testar",
+      nome: "BÁSICO",
+      precoMensal: "19,90",
+      precoTrimestral: "52,90",
+      precoAnual: "189,90",
+      periodo: "mês",
       beneficios: [
-        "✓ Acesso a todo conteúdo",
-        "✓ Qualidade HD 1080p",
-        "✓ 1 tela simultânea",
-        "✓ Suporte 24/7",
-        "✓ Cancelamento a qualquer momento"
+        "1 tela simultânea",
+        "Qualidade HD",
+        "Assista no celular ou tablet",
+        "Filmes e séries ilimitados",
+        "Suporte 24/7"
       ],
       corDestaque: "#E50914"
     },
     {
-      nome: "MENSAL",
-      preco: "34,90",
+      nome: "PADRÃO",
+      precoMensal: "29,90",
+      precoTrimestral: "79,90",
+      precoAnual: "279,90",
       periodo: "mês",
       economiza: "Economize 10%",
       popular: true,
       beneficios: [
-        "✓ Acesso a todo conteúdo",
-        "✓ Qualidade Full HD 4K",
-        "✓ 2 telas simultâneas",
-        "✓ Download para assistir offline",
-        "✓ Suporte prioritário 24/7",
-        "✓ Cancelamento a qualquer momento"
+        "2 telas simultâneas",
+        "Qualidade Full HD",
+        "Assista em qualquer dispositivo",
+        "Filmes e séries ilimitados",
+        "Downloads para assistir offline",
+        "Suporte prioritário"
       ],
       corDestaque: "#E50914"
     },
     {
-      nome: "TRIMESTRAL",
-      preco: "54,90",
-      periodo: "3 meses",
-      economiza: "Economize 35%",
+      nome: "PREMIUM",
+      precoMensal: "39,90",
+      precoTrimestral: "104,90",
+      precoAnual: "379,90",
+      periodo: "mês",
+      economiza: "Economize 15%",
       beneficios: [
-        "✓ Acesso a todo conteúdo",
-        "✓ Qualidade Full HD 4K",
-        "✓ 4 telas simultâneas",
-        "✓ Download para assistir offline",
-        "✓ Conteúdo exclusivo",
-        "✓ Suporte VIP 24/7",
-        "✓ Cancelamento a qualquer momento"
+        "4 telas simultâneas",
+        "Qualidade 4K Ultra HD",
+        "Assista em qualquer dispositivo",
+        "Filmes e séries ilimitados",
+        "Downloads ilimitados",
+        "Conteúdo exclusivo",
+        "Suporte VIP 24/7"
       ],
       corDestaque: "#E50914"
     }
   ];
+
+  const getPrecoPorPeriodo = (plano: Plano) => {
+    switch (periodoAtivo) {
+      case 'mensal':
+        return { preco: plano.precoMensal, periodo: '/mês' };
+      case 'trimestral':
+        return { preco: plano.precoTrimestral, periodo: '/trimestre' };
+      case 'anual':
+        return { preco: plano.precoAnual, periodo: '/ano' };
+      default:
+        return { preco: plano.precoMensal, periodo: '/mês' };
+    }
+  };
+
+  const getPeriodoTexto = () => {
+    switch (periodoAtivo) {
+      case 'mensal': return 'Mensal';
+      case 'trimestral': return 'Trimestral';
+      case 'anual': return 'Anual';
+      default: return 'Mensal';
+    }
+  };
+
+  const handleAssinarClick = (planoNome: string) => {
+    alert(`Você escolheu o plano ${planoNome} no período ${getPeriodoTexto()}`);
+    // Aqui você pode implementar a lógica de redirecionamento ou modal de pagamento
+  };
 
   return (
     <section className={styles.secaoPlanos}>
@@ -77,55 +113,84 @@ const SecaoValores: React.FC<SecaoValoresProps> = ({
           <p className={styles.subtitulo}>{subtitulo}</p>
         </div>
         
-        <div className={styles.planosGrid}>
-          {planos.map((plano, index) => (
-            <div 
-              key={index} 
-              className={`${styles.planoCard} ${plano.popular ? styles.planoPopular : ''}`}
-            >
-              {plano.popular && (
-                <div 
-                  className={styles.popularBadge}
-                  style={{ backgroundColor: plano.corDestaque }}
-                >
-                  MAIS POPULAR
-                </div>
-              )}
+        {/* Seletor de Período */}
+        <div className={styles.seletorPeriodo}>
+          <button
+            className={`${styles.periodoOpcao} ${periodoAtivo === 'mensal' ? styles.ativo : ''}`}
+            onClick={() => setPeriodoAtivo('mensal')}
+          >
+            Plano Mensal
+          </button>
+          <button
+            className={`${styles.periodoOpcao} ${periodoAtivo === 'trimestral' ? styles.ativo : ''}`}
+            onClick={() => setPeriodoAtivo('trimestral')}
+          >
+            Plano Trimestral
+          </button>
+          <button
+            className={`${styles.periodoOpcao} ${periodoAtivo === 'anual' ? styles.ativo : ''}`}
+            onClick={() => setPeriodoAtivo('anual')}
+          >
+            Plano Anual
+          </button>
+        </div>
+
+        <div className={styles.planosContainer}>
+          <div className={styles.planosGrid}>
+            {planos.map((plano, index) => {
+              const precoInfo = getPrecoPorPeriodo(plano);
               
-              <div className={styles.planoHeader}>
-                <h3 className={styles.planoNome}>{plano.nome}</h3>
-                <div className={styles.precoContainer}>
-                  <span className={styles.preco}>R$ {plano.preco}</span>
-                  <span className={styles.periodo}>/{plano.periodo}</span>
+              return (
+                <div 
+                  key={index} 
+                  className={`${styles.planoCard} ${plano.popular ? styles.planoPopular : ''}`}
+                >
+                  {plano.popular && (
+                    <div 
+                      className={styles.popularBadge}
+                      style={{ background: `linear-gradient(90deg, ${plano.corDestaque}, #B81D24)` }}
+                    >
+                      MAIS POPULAR
+                    </div>
+                  )}
+                  
+                  <div className={styles.planoHeader}>
+                    <h3 className={styles.planoNome}>{plano.nome}</h3>
+                    <div className={styles.precoContainer}>
+                      <span className={styles.preco}>R$ {precoInfo.preco}</span>
+                      <span className={styles.periodo}>{precoInfo.periodo}</span>
+                    </div>
+                    {plano.economiza && (
+                      <p className={styles.economiza}>{plano.economiza}</p>
+                    )}
+                  </div>
+
+                  <ul className={styles.beneficios}>
+                    {plano.beneficios.map((beneficio, beneficioIndex) => (
+                      <li key={beneficioIndex} className={styles.beneficio}>
+                        {beneficio}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button 
+                    className={styles.botaoAssinar}
+                    style={{ 
+                      background: `linear-gradient(90deg, ${plano.corDestaque}, #B81D24)`,
+                      border: `1px solid ${plano.corDestaque}`
+                    }}
+                    onClick={() => handleAssinarClick(plano.nome)}
+                  >
+                    ASSINAR AGORA
+                  </button>
                 </div>
-                {plano.economiza && (
-                  <p className={styles.economiza}>{plano.economiza}</p>
-                )}
-              </div>
-
-              <ul className={styles.beneficios}>
-                {plano.beneficios.map((beneficio, beneficioIndex) => (
-                  <li key={beneficioIndex} className={styles.beneficio}>
-                    {beneficio}
-                  </li>
-                ))}
-              </ul>
-
-              <button 
-                className={styles.botaoAssinar}
-                style={{ 
-                  backgroundColor: plano.corDestaque,
-                  borderColor: plano.corDestaque
-                }}
-              >
-                ASSINAR AGORA
-              </button>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
 
         <div className={styles.notaRodape}>
-          <p>*Todos os planos incluem 7 dias grátis para teste</p>
+          <p>*Todos os planos incluem 7 dias grátis para teste. Cancele quando quiser.</p>
         </div>
       </div>
     </section>
