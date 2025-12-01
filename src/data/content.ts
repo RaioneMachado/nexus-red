@@ -1,12 +1,12 @@
 export const featuredMovies = [
   {
     id: 1,
-    title: "Horizonte Vermelho",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&h=900&fit=crop",
-    rating: 9.2,
-    year: "2024",
-    genre: "Ação",
-    duration: "2h 15min",
+    title: "Stranger Things",
+    image: "/Capa Fundo Europlay  Stranger.png",  // Note os espaços
+    rating: 8.6,
+    year: "2025",
+    genre: "Ficção Científica",
+    duration: "5ª Temporada",
   },
   {
     id: 2,
