@@ -91,6 +91,39 @@ export const carouselMovies = [
     year: "2005",
     genre: "Infantil/Comédia",
   },
+  {
+    id: 11,
+    title: "O Grande Dragão Branco",
+    image: "/O Grande Dragão Branco Carrossel.png",
+    rating: 6.9,
+    year: "1988",
+    genre: "Ação/Esporte",
+  },
+  {
+    id: 11,
+    title: "Rambo Programado para Matar",
+    image: "/Rambo Carrossel.png",
+    rating: 6.9,
+    year: "1982",
+    genre: "Ação",
+  },
+  {
+    id: 11,
+    title: "Rio 2",
+    image: "/Rio 2 Carrossel.png",
+    rating: 6.3,
+    year: "2014",
+    genre: "Infantil/Comédia",
+  },
+  {
+    id: 11,
+    title: "Velozes e Furiosos 1",
+    image: "/Velozes e Furioso 1 Carrossel.png",
+    rating: 6.8,
+    year: "2001",
+    genre: "Ação/Crime",
+  },
+  
 ];
 
 export const series = [
