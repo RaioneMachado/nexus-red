@@ -26,7 +26,7 @@ export const featuredMovies = [
   },
   {
     id: 4,
-    title: "Resgate Implacavel",
+    title: "Resgate Implacável",
     image: "/Resgate Implacavel Capa Europlay.png",
     rating: 5.7,
     year: "2025",
