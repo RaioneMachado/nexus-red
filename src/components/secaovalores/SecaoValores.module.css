@@ -2,10 +2,9 @@
 
 .secaoPlanos {
   padding: 5rem 0;
-  background: linear-gradient(to bottom, #0f0f0f 0%, #1a1a1a 100%);
+  background: linear-gradient(to bottom, #0f0f0f 0%, #141414 100%);
   color: white;
   position: relative;
-  overflow: hidden;
 }
 
 .secaoPlanos::before {
@@ -21,7 +20,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
 .header {
@@ -43,145 +42,51 @@
 
 .subtitulo {
   font-size: 1.5rem;
-  opacity: 0.8;
+  opacity: 0.9;
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
-}
-
-/* Seletor de Período */
-.seletorPeriodo {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  margin-bottom: 4rem;
-  background: rgba(30, 30, 30, 0.9);
-  border-radius: 12px;
-  padding: 0.5rem;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.periodoOpcao {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.periodoOpcao:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.periodoOpcao.ativo {
-  color: white;
-  background: linear-gradient(135deg, #E50914, #B81D24);
-  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
-}
-
-.periodoOpcao.ativo::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-}
-
-/* Contêiner dos cards */
-.planosContainer {
-  position: relative;
-  min-height: 600px;
+  line-height: 1.6;
 }
 
 .planosGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 3rem;
 }
 
-/* Cards melhorados */
 .planoCard {
   background: linear-gradient(145deg, rgba(35, 35, 35, 0.95), rgba(25, 25, 25, 0.98));
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-top: 4px solid;
+  border-radius: 12px;
   padding: 2.5rem 2rem;
   text-align: center;
   position: relative;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.planoCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #E50914, #B81D24);
-  z-index: 2;
-}
-
-.planoCard::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 40%, rgba(229, 9, 20, 0.03) 50%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: -1;
+  height: 100%;
 }
 
 .planoCard:hover {
   transform: translateY(-10px);
-  border-color: rgba(229, 9, 20, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-              0 0 0 1px rgba(229, 9, 20, 0.1);
-}
-
-.planoCard:hover::after {
-  opacity: 1;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .planoPopular {
-  border: 2px solid #E50914;
+  border: 2px solid;
+  transform: scale(1.05);
   background: linear-gradient(145deg, rgba(45, 25, 27, 0.95), rgba(35, 15, 17, 0.98));
-  box-shadow: 0 15px 35px rgba(229, 9, 20, 0.2),
-              0 0 0 1px rgba(229, 9, 20, 0.2);
+  box-shadow: 0 15px 35px rgba(229, 9, 20, 0.2);
 }
 
 .planoPopular:hover {
-  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3),
-              0 0 0 1px rgba(229, 9, 20, 0.3);
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3);
 }
 
 .popularBadge {
@@ -189,45 +94,28 @@
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, #E50914, #B81D24);
+  background: #E50914;
   color: white;
-  padding: 0.6rem 2rem;
-  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
-  z-index: 3;
 }
 
 .planoHeader {
   margin-bottom: 2rem;
-  flex-shrink: 0;
 }
 
 .planoNome {
   font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-}
-
-.planoNome::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 3px;
-  background: #E50914;
-  border-radius: 2px;
 }
 
 .precoContainer {
@@ -239,38 +127,23 @@
 }
 
 .preco {
-  font-size: 3.8rem;
+  font-size: 3.5rem;
   font-weight: 900;
   color: #fff;
   line-height: 1;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-.preco::before {
-  content: 'R$';
-  font-size: 1.2rem;
-  position: absolute;
-  top: 10px;
-  left: -25px;
-  opacity: 0.9;
 }
 
 .periodo {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   opacity: 0.8;
   font-weight: 400;
   margin-left: 5px;
 }
 
-.economiza {
+.descricao {
   color: #46d369;
-  font-weight: 700;
-  font-size: 0.95rem;
-  background: rgba(70, 211, 105, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  display: inline-block;
+  font-weight: 600;
+  font-size: 1rem;
   margin-top: 0.5rem;
 }
 
@@ -282,49 +155,35 @@
   flex-grow: 1;
 }
 
-.beneficios::before {
-  content: '';
-  display: block;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  margin: 1.5rem 0;
-}
-
 .beneficio {
-  padding: 0.85rem 0;
-  font-size: 1.05rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.9);
-  position: relative;
-  padding-left: 2rem;
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
 .beneficio:last-child {
   border-bottom: none;
 }
 
-.beneficio::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
+.checkIcon {
   color: #46d369;
   font-weight: bold;
   font-size: 1.1rem;
-}
-
-.beneficio:hover {
-  padding-left: 2.5rem;
-  color: white;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
 .botaoAssinar {
   width: 100%;
   padding: 1.25rem 2rem;
-  background: linear-gradient(90deg, #E50914, #B81D24);
+  background: #E50914;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -332,88 +191,40 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.botaoAssinar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s ease;
+  margin-top: auto;
 }
 
 .botaoAssinar:hover {
-  background: linear-gradient(90deg, #F40612, #C81D24);
-  transform: translateY(-3px);
+  background: #F40612;
+  transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
-}
-
-.botaoAssinar:hover::before {
-  left: 100%;
-}
-
-.botaoAssinar:active {
-  transform: translateY(-1px);
 }
 
 .notaRodape {
   text-align: center;
-  padding-top: 3rem;
-  margin-top: 3rem;
+  padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-}
-
-.notaRodape::before {
-  content: '💡';
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  background: #1a1a1a;
-  padding: 0 1rem;
 }
 
 .notaRodape p {
   opacity: 0.7;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-style: italic;
-  max-width: 600px;
-  margin: 0 auto;
   line-height: 1.6;
+  margin-bottom: 0.5rem;
 }
-
-/* Animações */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.planoCard {
-  animation: fadeInUp 0.5s ease forwards;
-}
-
-.planoCard:nth-child(1) { animation-delay: 0.1s; }
-.planoCard:nth-child(2) { animation-delay: 0.2s; }
-.planoCard:nth-child(3) { animation-delay: 0.3s; }
 
 /* Responsivo */
 @media (max-width: 992px) {
   .planosGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .planoCard:nth-child(3) {
+    grid-column: span 2;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
@@ -423,7 +234,7 @@
   }
   
   .titulo {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
   
   .subtitulo {
@@ -433,29 +244,13 @@
   .planosGrid {
     grid-template-columns: 1fr;
     gap: 2rem;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 400px;
+    margin: 0 auto 3rem;
   }
   
-  .seletorPeriodo {
-    flex-direction: column;
-    max-width: 300px;
-  }
-  
-  .periodoOpcao {
-    padding: 1rem;
-  }
-  
-  .periodoOpcao.ativo::after {
-    bottom: 0;
-    left: 0;
-    transform: none;
-    width: 3px;
-    height: 100%;
-  }
-  
-  .preco {
-    font-size: 3rem;
+  .planoCard:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
   }
   
   .planoPopular {
@@ -465,6 +260,10 @@
   .planoPopular:hover {
     transform: translateY(-10px);
   }
+  
+  .preco {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -473,7 +272,7 @@
   }
   
   .titulo {
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
   
   .subtitulo {
@@ -482,5 +281,14 @@
   
   .planoCard {
     padding: 2rem 1.5rem;
+  }
+  
+  .preco {
+    font-size: 2.5rem;
+  }
+  
+  .botaoAssinar {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
   }
 }
