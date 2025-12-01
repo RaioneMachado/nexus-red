@@ -26,11 +26,11 @@ export const featuredMovies = [
   },
   {
     id: 4,
-    title: "Fragmentos",
-    image: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=600&h=900&fit=crop",
-    rating: 8.5,
-    year: "2024",
-    genre: "Drama",
+    title: "Resgate Implacavel",
+    image: "/Resgate Implacavel Capa Europlay.png",
+    rating: 5.7,
+    year: "2025",
+    genre: "Ação",
   },
   {
     id: 5,
