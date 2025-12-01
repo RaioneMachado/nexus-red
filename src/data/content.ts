@@ -46,10 +46,10 @@ export const carouselMovies = [
   {
     id: 6,
     title: "Cyber City",
-    image: "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?w=600&h=900&fit=crop",
-    rating: 8.7,
-    year: "2024",
-    genre: "Sci-Fi",
+    image: "/Tropa de Elite Carrossel.png",
+    rating: 8.0,
+    year: "2007",
+    genre: "Crime/Ação",
   },
   {
     id: 7,
