@@ -19,10 +19,10 @@ export const featuredMovies = [
   {
     id: 3,
     title: "Código Neural",
-    image: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&h=900&fit=crop",
-    rating: 9.0,
-    year: "2024",
-    genre: "Sci-Fi",
+    image: "/Capa Invocação Do Mal 4 Europlay.png",
+    rating: 6.2,
+    year: "2025",
+    genre: "Terror",
   },
   {
     id: 4,
