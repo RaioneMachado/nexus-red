@@ -45,7 +45,7 @@ export const featuredMovies = [
 export const carouselMovies = [
   {
     id: 6,
-    title: "Cyber City",
+    title: "Tropa de Elite",
     image: "/Tropa de Elite Carrossel.png",
     rating: 8.0,
     year: "2007",
