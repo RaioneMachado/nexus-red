@@ -10,11 +10,11 @@ export const featuredMovies = [
   },
   {
     id: 2,
-    title: "Noite Eterna",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=900&fit=crop",
-    rating: 8.8,
-    year: "2024",
-    genre: "Thriller",
+    title: "Premonição 6",
+    image: "/Capa Fundo Europlay  Premoniçã 6.png",
+    rating: 6.8,
+    year: "2025",
+    genre: "Terror/Mistério",
   },
   {
     id: 3,
