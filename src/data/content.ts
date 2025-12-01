@@ -1,214 +1,222 @@
-export const featuredMovies = [
-  {
-    id: 1,
-    title: "Stranger Things",
-    image: "/Capa Fundo Europlay  Stranger.png",  // Note os espaços
-    rating: 8.6,
-    year: "2025",
-    genre: "Ficção Científica",
-    duration: "5ª Temporada",
-  },
-  {
-    id: 2,
-    title: "Premonição 6",
-    image: "/Capa Fundo Europlay  Premoniçã 6.png",
-    rating: 6.8,
-    year: "2025",
-    genre: "Terror/Mistério",
-  },
-  {
-    id: 3,
-    title: "Invocação do Mal 4",
-    image: "/Capa Invocação Do Mal 4 Europlay.png",
-    rating: 6.2,
-    year: "2025",
-    genre: "Terror",
-  },
-  {
-    id: 4,
-    title: "Resgate Implacável",
-    image: "/Resgate Implacavel Capa Europlay.png",
-    rating: 5.7,
-    year: "2025",
-    genre: "Ação",
-  },
-  {
-    id: 5,
-    title: "A Hora do Mal",
-    image: "/A Hora do Mal Capa Europlay.png",
-    rating: 7.5,
-    year: "2025",
-    genre: "Terror",
-  },
-];
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-export const carouselMovies = [
-  {
-    id: 6,
-    title: "Tropa de Elite",
-    image: "/Tropa de Elite Carrossel.png",
-    rating: 8.0,
-    year: "2007",
-    genre: "Crime/Ação",
-  },
-  {
-    id: 7,
-    title: "Os Condenados",
-    image: "/Capa filme os condenados Rolagem.png",
-    rating: 6.9,
-    year: "2007",
-    genre: "Ação",
-  },
-  {
-    id: 8,
-    title: "Jogos Mortais",
-    image: "/Jogos Mortais Carrossel.png",
-    rating: 7.8,
-    year: "2005",
-    genre: "FanTerror/Crime",
-  },
-  {
-    id: 9,
-    title: "Coraline e o Mundo Secreto",
-    image: "/Coraline Carrossel.png",
-    rating: 8.2,
-    year: "2009",
-    genre: "Infantil/Terror",
-  },
-  {
-    id: 10,
-    title: "IT a Coisa ",
-    image: "/IT a coisa carrossel.png",
-    rating: 7.3,
-    year: "2017",
-    genre: "Terror/Mistério",
-  },
-  {
-    id: 11,
-    title: "Madagascar",
-    image: "/Madagascar Carrossel.png",
-    rating: 6.9,
-    year: "2005",
-    genre: "Infantil/Comédia",
-  },
-  {
-    id: 11,
-    title: "O Grande Dragão Branco",
-    image: "/O Grande Dragão Branco Carrossel.png",
-    rating: 6.9,
-    year: "1988",
-    genre: "Ação/Esporte",
-  },
-  {
-    id: 11,
-    title: "Rambo Programado para Matar",
-    image: "/Rambo Carrossel.png",
-    rating: 6.9,
-    year: "1982",
-    genre: "Ação",
-  },
-  {
-    id: 11,
-    title: "Rio 2",
-    image: "/Rio 2 Carrossel.png",
-    rating: 6.3,
-    year: "2014",
-    genre: "Infantil/Comédia",
-  },
-  {
-    id: 11,
-    title: "Velozes e Furiosos 1",
-    image: "/Velozes e Furioso 1 Carrossel.png",
-    rating: 6.8,
-    year: "2001",
-    genre: "Ação/Crime",
-  },
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #141414;
+  color: white;
+}
+
+/* Container principal */
+.app {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0 1rem;
+}
+
+/* Seções */
+section {
+  margin: 2rem 0;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+/* Cards de filmes */
+.movie-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.03);
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 150%; /* Proporção 2:3 para posters */
+  overflow: hidden;
+}
+
+.movie-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-image {
+  transform: scale(1.05);
+}
+
+.rating-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffd700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.movie-info {
+  padding: 0.75rem;
+}
+
+.movie-title {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.movie-meta span {
+  background: #333;
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+}
+
+/* Grid para filmes em destaque, séries e jogos */
+.featured-grid,
+.series-grid,
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Carrossel */
+.carousel-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 2px;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 140px;
+  scroll-snap-align: start;
+}
+
+/* Media Queries para dispositivos maiores */
+@media (min-width: 640px) {
+  .app {
+    padding: 0 1.5rem;
+  }
   
-];
+  .featured-grid,
+  .series-grid,
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .carousel-item {
+    width: 160px;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+}
 
-export const series = [
-  {
-    id: 12,
-    title: "Dinastia Digital",
-    image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=600&h=900&fit=crop",
-    rating: 9.3,
-    year: "2024",
-    genre: "Drama",
-    duration: "8 Temporadas",
-  },
-  {
-    id: 13,
-    title: "Arquivo Secreto",
-    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=900&fit=crop",
-    rating: 9.0,
-    year: "2024",
-    genre: "Mistério",
-  },
-  {
-    id: 14,
-    title: "Império de Gelo",
-    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=600&h=900&fit=crop",
-    rating: 8.8,
-    year: "2024",
-    genre: "Fantasia",
-  },
-  {
-    id: 15,
-    title: "Redes Ocultas",
-    image: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=600&h=900&fit=crop",
-    rating: 9.1,
-    year: "2024",
-    genre: "Thriller",
-  },
-  {
-    id: 16,
-    title: "Nova Era",
-    image: "https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=600&h=900&fit=crop",
-    rating: 8.7,
-    year: "2024",
-    genre: "Sci-Fi",
-  },
-];
+@media (min-width: 768px) {
+  .featured-grid,
+  .series-grid,
+  .games-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .carousel-item {
+    width: 180px;
+  }
+  
+  .movie-title {
+    font-size: 1rem;
+  }
+}
 
-export const games = [
-  {
-    id: 17,
-    title: "Cyber Warriors",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b2b0c?w=600&h=900&fit=crop",
-    rating: 9.5,
-    year: "2024",
-    genre: "RPG",
-  },
-  {
-    id: 18,
-    title: "Speed Legends",
-    image: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=900&fit=crop",
-    rating: 9.2,
-    year: "2024",
-    genre: "Corrida",
-  },
-  {
-    id: 19,
-    title: "Tactical Force",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541f7f7b7a?w=600&h=900&fit=crop",
-    rating: 9.0,
-    year: "2024",
-    genre: "FPS",
-  },
-  {
-    id: 20,
-    title: "Kingdom Rise",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=900&fit=crop",
-    rating: 8.9,
-    year: "2024",
-    genre: "Estratégia",
-  },
-  {
-    id: 21,
-    title: "Dark Realms",
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=600&h=900&fit=crop",
-    rating: 9.3,
-    year: "2024",
-    genre: "Aventura",
-  },
-];
+@media (min-width: 1024px) {
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .featured-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .series-grid,
+  .games-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .carousel-item {
+    width: 200px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Ajustes específicos para imagens muito grandes ou muito pequenas */
+@media (max-width: 480px) {
+  .image-container {
+    padding-top: 140%; /* Ajuste para proporção mais quadrada em mobile */
+  }
+  
+  .movie-meta {
+    font-size: 0.7rem;
+  }
+  
+  .carousel-item {
+    width: 120px;
+  }
+}
+
+/* Para garantir que as imagens do Unsplash sejam responsivas */
+.movie-image[src*="unsplash"] {
+  background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+}
