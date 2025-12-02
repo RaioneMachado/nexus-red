@@ -33,8 +33,21 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          {/* LOGO E HAMBÚRGUER JUNTOS NO LADO ESQUERDO */}
           <div className="flex items-center gap-4 md:gap-6">
+            {/* HAMBÚRGUER MOBILE - AGORA NO INÍCIO (ESQUERDA) */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg bg-black/80 backdrop-blur-sm border border-white/20 hover:bg-white/10 hover:border-red-500/50 transition-all duration-300"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5 text-white" />
+              ) : (
+                <Menu className="w-5 h-5 text-white" />
+              )}
+            </button>
+
+            {/* LOGO - AO LADO DO HAMBÚRGUER */}
             <a 
               href="#" 
               className="flex items-center gap-3 group transition-all duration-300 hover:scale-105"
@@ -110,17 +123,16 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-red-400 transition-colors duration-300"
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Botão Mobile (SEGUNDO BOTÃO) - Agora removido */}
+          <div className="md:hidden">
+            <Button 
+              variant="hero" 
+              size="sm" 
+              className="bg-red-600 hover:bg-red-700 text-white font-bold border-0 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 text-xs px-3 py-1 h-8"
+            >
+              Entrar
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -165,7 +177,7 @@ const Navbar = () => {
                   variant="glass" 
                   className="flex-1 bg-white/10 hover:bg-white/20 text-white border-white/20 font-sans"
                 >
-                  Entrar
+                  Perfil
                 </Button>
                 <Button 
                   variant="hero" 
