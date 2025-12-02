@@ -12,9 +12,9 @@ const HeroSection = () => {
       <header className="fixed top-0 left-0 right-0 z-50 md:hidden">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
-            {/* Logo e Menu Hambúrguer lado a lado */}
+            {/* Hambúrguer no lado esquerdo e logo ao lado direito do hambúrguer */}
             <div className="flex items-center gap-4">
-              {/* Hambúrguer */}
+              {/* Hambúrguer - AGORA NO INÍCIO */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="relative z-50 p-2 rounded-lg bg-black/80 backdrop-blur-sm border border-white/20 hover:bg-white/10 transition-colors"
@@ -27,7 +27,7 @@ const HeroSection = () => {
                 )}
               </button>
 
-              {/* Logo */}
+              {/* Logo - DEPOIS do hambúrguer */}
               <div className="text-white font-bold text-xl font-sans">
                 EuroPlay
               </div>
@@ -53,7 +53,7 @@ const HeroSection = () => {
               onClick={() => setIsMenuOpen(false)}
             />
             
-            {/* Menu Content */}
+            {/* Menu Content - AGORA DO LADO ESQUERDO */}
             <div className="fixed top-0 left-0 bottom-0 w-3/4 max-w-sm z-50 bg-gradient-to-b from-gray-900 to-black border-r border-white/10 shadow-2xl animate-slide-in-left">
               <div className="pt-20 px-6">
                 <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/10">
