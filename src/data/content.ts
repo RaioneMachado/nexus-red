@@ -41,20 +41,23 @@ h2 {
   transform: scale(1.03);
 }
 
+/* Container flexível para imagens */
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 150%; /* Proporção 2:3 para posters */
+  min-height: 200px;
+  max-height: 300px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .movie-image {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.3s ease;
 }
@@ -139,6 +142,18 @@ h2 {
   scroll-snap-align: start;
 }
 
+/* Para items do carrossel com imagens flexíveis */
+.carousel-item .image-container {
+  height: 200px;
+}
+
+.carousel-item .movie-image {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 200px;
+}
+
 /* Media Queries para dispositivos maiores */
 @media (min-width: 640px) {
   .app {
@@ -158,6 +173,16 @@ h2 {
   h2 {
     font-size: 1.75rem;
   }
+  
+  /* Ajustes para desktop - manter proporção mais uniforme */
+  .image-container {
+    height: 280px;
+  }
+  
+  .movie-image {
+    height: 280px;
+    object-fit: cover;
+  }
 }
 
 @media (min-width: 768px) {
@@ -173,6 +198,22 @@ h2 {
   
   .movie-title {
     font-size: 1rem;
+  }
+  
+  .image-container {
+    height: 320px;
+  }
+  
+  .movie-image {
+    height: 320px;
+  }
+  
+  .carousel-item .image-container {
+    height: 240px;
+  }
+  
+  .carousel-item .movie-image {
+    max-height: 240px;
   }
 }
 
@@ -199,12 +240,34 @@ h2 {
   h2 {
     font-size: 2rem;
   }
+  
+  .image-container {
+    height: 360px;
+  }
+  
+  .movie-image {
+    height: 360px;
+  }
+  
+  .carousel-item .image-container {
+    height: 280px;
+  }
+  
+  .carousel-item .movie-image {
+    max-height: 280px;
+  }
 }
 
-/* Ajustes específicos para imagens muito grandes ou muito pequenas */
-@media (max-width: 480px) {
+/* Ajustes específicos para mobile */
+@media (max-width: 639px) {
   .image-container {
-    padding-top: 140%; /* Ajuste para proporção mais quadrada em mobile */
+    min-height: 180px;
+    max-height: 250px;
+  }
+  
+  .movie-image {
+    max-height: 250px;
+    object-fit: contain; /* Mantém a imagem inteira visível no mobile */
   }
   
   .movie-meta {
@@ -214,9 +277,44 @@ h2 {
   .carousel-item {
     width: 120px;
   }
+  
+  .carousel-item .image-container {
+    height: 160px;
+  }
+  
+  .carousel-item .movie-image {
+    max-height: 160px;
+  }
 }
 
 /* Para garantir que as imagens do Unsplash sejam responsivas */
 .movie-image[src*="unsplash"] {
   background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+}
+
+/* Fallback para imagens quebradas */
+.movie-image:not([src]),
+.movie-image[src=""],
+.movie-image[src*="undefined"],
+.movie-image[src*="null"] {
+  background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Classe auxiliar para imagens verticais */
+.image-vertical {
+  width: auto !important;
+  max-width: 100% !important;
+  height: 100% !important;
+}
+
+/* Classe auxiliar para imagens horizontais */
+.image-horizontal {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 100% !important;
 }
