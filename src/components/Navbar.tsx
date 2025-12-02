@@ -33,12 +33,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* LOGO E HAMBÚRGUER JUNTOS NO LADO ESQUERDO */}
-          <div className="flex items-center gap-4 md:gap-6">
-            {/* HAMBÚRGUER MOBILE - AGORA NO INÍCIO (ESQUERDA) */}
+          {/* LADO ESQUERDO: Hambúrguer e Logo */}
+          <div className="flex items-center gap-3 md:gap-6">
+            {/* HAMBÚRGUER - PRIMEIRO ITEM À ESQUERDA */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-black/80 backdrop-blur-sm border border-white/20 hover:bg-white/10 hover:border-red-500/50 transition-all duration-300"
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-black/80 backdrop-blur-sm border border-white/20 hover:bg-white/10 hover:border-red-500/50 transition-all duration-300"
+              aria-label="Menu"
             >
               {isMobileMenuOpen ? (
                 <X className="w-5 h-5 text-white" />
@@ -53,19 +54,19 @@ const Navbar = () => {
               className="flex items-center gap-3 group transition-all duration-300 hover:scale-105"
               onClick={() => setActiveLink("Início")}
             >
-              <div className="relative">
+              <div className="hidden md:block relative">
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-red-600 rounded-lg flex items-center justify-center group-hover:bg-red-700 group-hover:shadow-[0_0_30px_rgba(239,68,68,0.6)] transition-all duration-300">
                   <Play className="w-4 h-4 md:w-5 md:h-5 text-white fill-current" />
                 </div>
                 <div className="absolute inset-0 bg-red-500 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <span className="font-sans text-xl md:text-2xl font-black text-white tracking-tight">
+              <span className="font-sans text-xl md:text-2xl font-black text-white tracking-tight whitespace-nowrap">
                 EURO<span className="text-red-600">PLAYO</span>
               </span>
             </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop Navigation - APENAS EM TELAS GRANDES */}
+            <div className="hidden lg:flex items-center gap-1 ml-6">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -123,12 +124,12 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Botão Mobile (SEGUNDO BOTÃO) - Agora removido */}
-          <div className="md:hidden">
+          {/* LADO DIREITO MOBILE - APENAS BOTÃO PEQUENO */}
+          <div className="flex md:hidden items-center gap-2">
             <Button 
-              variant="hero" 
+              variant="ghost" 
               size="sm" 
-              className="bg-red-600 hover:bg-red-700 text-white font-bold border-0 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:scale-105 transition-all duration-300 text-xs px-3 py-1 h-8"
+              className="bg-red-600/90 hover:bg-red-700 text-white font-bold border-0 hover:scale-105 transition-all duration-300 text-xs px-3 py-1 h-8 min-w-16"
             >
               Entrar
             </Button>
