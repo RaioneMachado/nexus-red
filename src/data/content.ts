@@ -29,36 +29,38 @@ h2 {
   padding-left: 0.5rem;
 }
 
-/* Cards de filmes */
+/* Cards de filmes - REESTRUTURADO */
 .movie-card {
   background: #1f1f1f;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .movie-card:hover {
   transform: scale(1.03);
 }
 
-/* Container flexível para imagens */
+/* Container flexível para imagens - MOBILE FIRST */
 .image-container {
   position: relative;
   width: 100%;
-  min-height: 200px;
-  max-height: 300px;
-  overflow: hidden;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #2a2a2a;
+  min-height: 180px;
+  overflow: hidden;
 }
 
 .movie-image {
   width: 100%;
-  height: auto;
-  max-height: 300px;
+  height: 100%;
   object-fit: contain;
-  object-position: center;
   transition: transform 0.3s ease;
 }
 
@@ -76,10 +78,12 @@ h2 {
   border-radius: 4px;
   font-weight: bold;
   font-size: 0.875rem;
+  z-index: 1;
 }
 
 .movie-info {
   padding: 0.75rem;
+  flex-shrink: 0;
 }
 
 .movie-title {
@@ -113,7 +117,7 @@ h2 {
   gap: 1rem;
 }
 
-/* Carrossel */
+/* Carrossel - MOBILE FIRST */
 .carousel-container {
   display: flex;
   gap: 1rem;
@@ -142,16 +146,14 @@ h2 {
   scroll-snap-align: start;
 }
 
-/* Para items do carrossel com imagens flexíveis */
-.carousel-item .image-container {
-  height: 200px;
+/* Para items do carrossel */
+.carousel-item .movie-card {
+  height: 220px;
 }
 
-.carousel-item .movie-image {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  max-height: 200px;
+.carousel-item .image-container {
+  height: 160px;
+  min-height: 160px;
 }
 
 /* Media Queries para dispositivos maiores */
@@ -174,14 +176,17 @@ h2 {
     font-size: 1.75rem;
   }
   
-  /* Ajustes para desktop - manter proporção mais uniforme */
+  /* Ajustes para tablet */
   .image-container {
-    height: 280px;
+    min-height: 240px;
   }
   
-  .movie-image {
-    height: 280px;
-    object-fit: cover;
+  .carousel-item .movie-card {
+    height: 260px;
+  }
+  
+  .carousel-item .image-container {
+    height: 190px;
   }
 }
 
@@ -200,20 +205,21 @@ h2 {
     font-size: 1rem;
   }
   
+  /* Desktop - manter proporção mais uniforme */
   .image-container {
-    height: 320px;
+    min-height: 280px;
   }
   
   .movie-image {
-    height: 320px;
+    object-fit: cover; /* Apenas no desktop cortamos as imagens */
+  }
+  
+  .carousel-item .movie-card {
+    height: 300px;
   }
   
   .carousel-item .image-container {
-    height: 240px;
-  }
-  
-  .carousel-item .movie-image {
-    max-height: 240px;
+    height: 220px;
   }
 }
 
@@ -242,32 +248,22 @@ h2 {
   }
   
   .image-container {
-    height: 360px;
+    min-height: 320px;
   }
   
-  .movie-image {
-    height: 360px;
+  .carousel-item .movie-card {
+    height: 340px;
   }
   
   .carousel-item .image-container {
-    height: 280px;
-  }
-  
-  .carousel-item .movie-image {
-    max-height: 280px;
+    height: 250px;
   }
 }
 
-/* Ajustes específicos para mobile */
-@media (max-width: 639px) {
+/* Ajustes específicos para mobile pequeno */
+@media (max-width: 480px) {
   .image-container {
-    min-height: 180px;
-    max-height: 250px;
-  }
-  
-  .movie-image {
-    max-height: 250px;
-    object-fit: contain; /* Mantém a imagem inteira visível no mobile */
+    min-height: 160px;
   }
   
   .movie-meta {
@@ -278,12 +274,12 @@ h2 {
     width: 120px;
   }
   
-  .carousel-item .image-container {
-    height: 160px;
+  .carousel-item .movie-card {
+    height: 200px;
   }
   
-  .carousel-item .movie-image {
-    max-height: 160px;
+  .carousel-item .image-container {
+    height: 140px;
   }
 }
 
@@ -305,16 +301,32 @@ h2 {
   font-size: 0.875rem;
 }
 
-/* Classe auxiliar para imagens verticais */
-.image-vertical {
-  width: auto !important;
-  max-width: 100% !important;
-  height: 100% !important;
+/* Garantir que todas as imagens se ajustem ao container */
+.movie-image {
+  transition: all 0.3s ease;
 }
 
-/* Classe auxiliar para imagens horizontais */
-.image-horizontal {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 100% !important;
+/* Classes específicas por tipo de imagem (opcional) */
+.image-container.vertical img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+}
+
+.image-container.horizontal img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+/* Para forçar altura máxima no mobile */
+@media (max-width: 767px) {
+  .movie-image {
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+  
+  .image-container {
+    max-height: none !important;
+  }
 }
