@@ -4,7 +4,7 @@ import AutoCarousel from "@/components/AutoCarousel";
 import ParallaxNotebook from "@/components/ParallaxNotebook";
 import ContentSection from "@/components/ContentSection";
 import Footer from "@/components/Footer";
-import SecaoValores from "@/components/secaovalores";
+import SecaoValores from "@/components/secaovalores/SecaoValores";
 import { featuredMovies, carouselMovies, series, games } from "@/data/content";
 
 // Filtrar os filmes para remover "Stranger Things" e "Dinastia Digital"
