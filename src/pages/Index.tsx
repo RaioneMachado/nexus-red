@@ -7,6 +7,21 @@ import Footer from "@/components/Footer";
 import SecaoValores from "@/components/secaovalores";
 import { featuredMovies, carouselMovies, series, games } from "@/data/content";
 
+// Filtrar os filmes para remover "Stranger Things" e "Dinastia Digital"
+const filteredFeaturedMovies = featuredMovies.filter(
+  movie => movie.title !== "Stranger Things" && movie.title !== "Dinastia Digital"
+);
+
+// Filtrar também do carouselMovies se necessário
+const filteredCarouselMovies = carouselMovies.filter(
+  movie => movie.title !== "Stranger Things" && movie.title !== "Dinastia Digital"
+);
+
+// Filtrar das séries também (caso "Stranger Things" esteja lá)
+const filteredSeries = series.filter(
+  item => item.title !== "Stranger Things"
+);
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -21,7 +36,7 @@ const Index = () => {
             id="featured"
             title="EM DESTAQUE"
             subtitle="Os melhores lançamentos selecionados para você"
-            items={featuredMovies}
+            items={filteredFeaturedMovies}
             layout="featured"
           />
         </section>
@@ -29,7 +44,7 @@ const Index = () => {
         {/* Auto Carousel - Trending */}
         <section className="py-8 bg-gradient-to-b from-background via-card to-background">
           <AutoCarousel
-            items={carouselMovies}
+            items={filteredCarouselMovies}
             title="TENDÊNCIAS"
             direction="left"
             speed={35}
@@ -51,7 +66,7 @@ const Index = () => {
             id="series-content"
             title="SÉRIES"
             subtitle="Maratone as melhores séries do momento"
-            items={series}
+            items={filteredSeries}
             layout="featured"
           />
         </section>
@@ -59,7 +74,7 @@ const Index = () => {
         {/* Auto Carousel - Series */}
         <section className="py-8 bg-card">
           <AutoCarousel
-            items={[...series, ...carouselMovies.slice(0, 3)]}
+            items={[...filteredSeries, ...filteredCarouselMovies.slice(0, 3)]}
             title="MAIS ASSISTIDAS"
             direction="right"
             speed={40}
