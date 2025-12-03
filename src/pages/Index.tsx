@@ -7,19 +7,18 @@ import Footer from "@/components/Footer";
 import SecaoValores from "@/components/secaovalores/SecaoValores";
 import { featuredMovies, carouselMovies, series, games } from "@/data/content";
 
-// Filtrar os filmes para remover "Stranger Things" e "Dinastia Digital"
+// Remover apenas os filmes "Stranger Things" e "Dinastia Digital"
 const filteredFeaturedMovies = featuredMovies.filter(
   movie => movie.title !== "Stranger Things" && movie.title !== "Dinastia Digital"
 );
 
-// Filtrar também do carouselMovies se necessário
 const filteredCarouselMovies = carouselMovies.filter(
   movie => movie.title !== "Stranger Things" && movie.title !== "Dinastia Digital"
 );
 
-// Filtrar das séries também (caso "Stranger Things" esteja lá)
+// Mesmo filtro nas séries
 const filteredSeries = series.filter(
-  item => item.title !== "Stranger Things"
+  item => item.title !== "Stranger Things" && item.title !== "Dinastia Digital"
 );
 
 const Index = () => {
@@ -29,8 +28,8 @@ const Index = () => {
       
       <main>
         <HeroSection />
-        
-        {/* Featured Movies Section */}
+
+        {/* Featured Movies Section (corrigido) */}
         <section id="movies" className="relative">
           <ContentSection
             id="featured"
@@ -41,7 +40,7 @@ const Index = () => {
           />
         </section>
 
-        {/* Auto Carousel - Trending */}
+        {/* Carousel Trending (corrigido) */}
         <section className="py-8 bg-gradient-to-b from-background via-card to-background">
           <AutoCarousel
             items={filteredCarouselMovies}
@@ -51,16 +50,14 @@ const Index = () => {
           />
         </section>
 
-        {/* Parallax Notebook */}
         <ParallaxNotebook />
 
-        {/* SEÇÃO DE PLANOS - CORRIGIDA */}
         <SecaoValores 
           titulo="Escolha Seu Plano"
           subtitulo="Assista onde quiser. Cancele quando quiser."
         />
 
-        {/* Series Section */}
+        {/* Série (corrigido) */}
         <section id="series" className="bg-gradient-to-b from-background to-card">
           <ContentSection
             id="series-content"
@@ -71,17 +68,19 @@ const Index = () => {
           />
         </section>
 
-        {/* Auto Carousel - Series */}
+        {/* “Mais assistidas” corrigido — NÃO usa slice antes do filtro */}
         <section className="py-8 bg-card">
           <AutoCarousel
-            items={[...filteredSeries, ...filteredCarouselMovies.slice(0, 3)]}
+            items={[
+              ...filteredSeries,
+              ...filteredCarouselMovies
+            ]}
             title="MAIS ASSISTIDAS"
             direction="right"
             speed={40}
           />
         </section>
 
-        {/* Games Section */}
         <section id="games" className="bg-gradient-to-b from-card to-background">
           <ContentSection
             id="games-content"
